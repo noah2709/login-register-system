@@ -1,5 +1,5 @@
 # login-register-system
-A simple login-register system for our final project in our database lesson
+A simple login-register system for our final project in our database course
 
 ## Todo
 
