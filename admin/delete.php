@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
 
     if (!empty($username) or !empty($email) or !empty($id)) {
 
-        $stmt = $conn->prepare("DELETE FROM user WHERE benutzername = ? or email = ? or user_id = ?");
+        $stmt = $conn->prepare("DELETE FROM user WHERE username = ? or email = ? or user_id = ?");
         $stmt->bind_param("ssi", $username, $email, $id);
 
         $stmt->execute();
