@@ -85,9 +85,9 @@ function HumanNameExists($conn, $firstname, $lastname)
 
 function createUser($conn, $firstname, $lastname, $username, $password, $email)
 // 
-// Role_id 0 = User
-// Role_id 1 = Trainer
-// Role_id 2 = Admin
+// Role_id 1 = User
+// Role_id 2 = Trainer
+// Role_id 3 = Admin
 // 
 // 
 {
@@ -129,7 +129,7 @@ function loginUser($conn, $username, $pwd)
         exit();
     }
 
-    $pwdHashed  = $usernameExists['userPwd'];
+    $pwdHashed  = $usernameExists['password'];
     $checkPwd   = password_verify($pwd, $pwdHashed);
 
     if ($checkPwd === false) {
@@ -137,10 +137,32 @@ function loginUser($conn, $username, $pwd)
         exit();
     } else if ($checkPwd === true) {
         session_start();
-        $_SESSION['userid']     = $usernameExists['userId'];
-        $_SESSION['username']   = $usernameExists['userName'];
-        $_SESSION['role']       = $usernameExists['userRole'];
+        $_SESSION['userid']     = $usernameExists['user_id'];
+        $_SESSION['username']   = $usernameExists['username'];
+        $_SESSION['role']       = getRoleFromId($usernameExists['role_id']);
         header("location: ../index.php");
         exit();
+    }
+}
+
+
+function getRoleFromId($id)
+{
+
+    switch ($id) {
+
+        case 1:
+            return "User";
+            break;
+        case 2:
+            return "Trainer";
+            break;
+        case 3:
+            return "Admin";
+            break;
+
+        default:
+            return "User";
+            break;
     }
 }
