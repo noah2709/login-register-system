@@ -100,7 +100,7 @@ function createUser($conn, $firstname, $lastname, $username, $password, $email)
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    $role_id = 0;
+    $role_id = 1;
     $club_id = NULL;
 
     mysqli_stmt_bind_param($stmt, "sssssii", $firstname, $lastname, $username, $hashedPassword, $email, $role_id, $club_id);
