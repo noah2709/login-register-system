@@ -85,13 +85,13 @@ function HumanNameExists($conn, $firstname, $lastname)
 
 function createUser($conn, $firstname, $lastname, $username, $password, $email)
 // 
-// Role_id 0 = Admin
-// Role_id 1 = User
-// Role_id 2 = Trainer
+// Role_id 0 = User
+// Role_id 1 = Trainer
+// Role_id 2 = Admin
 // 
 // 
 {
-    $sql    = "INSERT INTO user (firstname, lastname, username, password, email, role_id) VALUES (?, ?, ?, ?, ?, ?);";
+    $sql    = "INSERT INTO user (firstname, lastname, username, password, email, role_id, club_id) VALUES (?, ?, ?, ?, ?, ?, ?);";
     $stmt   = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../signup.php?error=INSERTFAILED");
@@ -100,7 +100,7 @@ function createUser($conn, $firstname, $lastname, $username, $password, $email)
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "sssssi", $firstname, $lastname, $username, $hashedPassword, $email, 1);
+    mysqli_stmt_bind_param($stmt, "sssssii", $firstname, $lastname, $username, $hashedPassword, $email, 0, NULL);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../signup.php?error=none");
