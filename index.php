@@ -16,7 +16,7 @@ session_start();
     <div class="header">
         <?php
         if (isset($_SESSION['role'])) {
-            if ($_SESSION['role'] == "admin") {
+            if (strcasecmp($_SESSION['role'], "admin") == 0) {
                 include_once 'inc/db.inc.php';
 
                 $username = $_SESSION['username'];
@@ -41,9 +41,9 @@ session_start();
 
                     echo '<tr class="' . $cssClasses . '">';
                     echo "<td>" . $row["0"] . "</td>";
-                    echo "<td>" . $row["1"] . "</td>";
-                    echo "<td>" . $row["2"] . "</td>";
                     echo "<td>" . $row["3"] . "</td>";
+                    echo "<td>" . $row["5"] . "</td>";
+                    echo "<td>" . $row["6"] . "</td>";
                     echo "<td>" . "<a href = 'inc/delete.php?rn=$row[0]'>" . " <i class='fas fa-trash'></i>" . "</td>";
                     echo "</tr>";
                 }
@@ -73,7 +73,7 @@ session_start();
 
                 foreach ($data as $row) {
                     echo "<td>" . $row["1"] . "</td>";
-                    echo "<td>" . $row["2"] . "</td>";
+                    echo "<td>" . $row["5"] . "</td>";
                     echo "</tr>";
                 }
 
