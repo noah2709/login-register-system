@@ -1,5 +1,7 @@
 <?php
 session_start();
+include_once 'inc/db.inc.php';
+include_once 'inc/functions.inc.php';
 ?>
 
 <html lang="en">
@@ -8,7 +10,9 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/2deba413ff.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     <title>Login System</title>
 </head>
 
@@ -17,40 +21,64 @@ session_start();
         <?php
         if (isset($_SESSION['role'])) {
             if (strcasecmp($_SESSION['role'], "admin") == 0) {
-                include_once 'inc/db.inc.php';
+        ?>
+                <div class='logout'><button class='logout__btn'><a href='inc/logout.inc.php'>Logout</a></button></div>
+                <div class="h1">
+                    <h1>Admin Panel</h1>
+                </div>
+                <div class="allboxes">
+                    <div class="boxleft">
+                        <div class="boxtitle">
+                            <p>Benutzer löschen</p><i class="fas fa-user-slash"></i>
+                        </div>
+                        <div class="boxleft_content">
+                            <p>Klicke unten, um zu dem Formular zu gelangen, wo du Benutzer löschen kannst.</p>
+                        </div>
+                        <div class="boxleft_attention">
+                            <p>Achtung! Gelöschte Benutzer können selbst vom Admin nicht wiederhergestellt werden.</p>
+                        </div>
+                        <div class="littlebox">
+                            <a href="./admin/delete.php">
+                                <div class="littlebox_text">
+                                    <p>Zum Formular ≫</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="boxmiddle">
+                        <div class="boxtitle">
+                            <p>Benutzer bearbeiten</p><i class="fas fa-user-edit"></i>
+                        </div>
+                        <div class="boxleft_content">
+                            <p>Klicke unten, um zu dem Formular zu gelangen, wo du Benutzer bearbeiten kannst.</p>
+                        </div>
+                        <div class="littlebox">
+                            <a href="./admin/update.php">
+                                <div class="littlebox_text">
+                                    <p>Zum Formular ≫</p>
+                                </div>
+                            </a>
+                        </div>
 
-                $username = $_SESSION['username'];
-
-                $sql        = 'SELECT user_id, firstname, lastname, username, password, email,role_id, club_id FROM user';
-                $dbquery    = $conn->prepare($sql);
-                $dbquery->execute();
-                $result     = $dbquery->get_result();
-                $data       = $result->fetch_all();
-
-                echo "<h1>Admin Panel<h1>";
-                echo "<br><br>";
-                echo "<h3>Welcome $username !<h3>";
-
-                echo "<table class= 'query_table' method='POST' id='query_table'>";
-                echo "<thead><tr>";
-                echo "<td>ID</td><td>Username</td><td>Email</td><td>Role</td>";
-                echo "</tr></thead>";
-
-                foreach ($data as $row) {
-                    $cssClasses = (isset($_POST['submit_search']) && in_array($row[0], $ids)) ? 'highlight' : '';
-
-                    echo '<tr class="' . $cssClasses . '">';
-                    echo "<td>" . $row["0"] . "</td>";
-                    echo "<td>" . $row["3"] . "</td>";
-                    echo "<td>" . $row["5"] . "</td>";
-                    echo "<td>" . $row["6"] . "</td>";
-                    echo "<td>" . "<a href = 'inc/delete.php?rn=$row[0]'>" . " <i class='fas fa-trash'></i>" . "</td>";
-                    echo "</tr>";
-                }
-                echo "<div class='logout'><button class='logout__btn'><a href='inc/logout.inc.php'>Logout</a></button></div>";
+                    </div>
+                    <div class="boxright">
+                        <div class="boxtitle">
+                            <p>Benutzer suchen</p><i class="fas fa-search"></i>
+                        </div>
+                        <div class="boxleft_content">
+                            <p>Klicke unten, um zu dem Formular zu gelangen, wo du Benutzer suchen kannst.</p>
+                        </div>
+                        <div class="littlebox">
+                            <a href="./admin/search.php">
+                                <div class="littlebox_text">
+                                    <p>Zum Formular ≫</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        <?php
             } else {
-
-                include_once 'inc/db.inc.php';
 
                 $userid = $_SESSION['userid'];
                 $username = $_SESSION['username'];
