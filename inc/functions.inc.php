@@ -1,8 +1,21 @@
 <?php
+include_once 'db.inc.php';
+?>
+<?php
 
 function emptyInputSignup($username, $email, $pwd, $pwdRepeat)
 {
     if (empty($username) || empty($email) || empty($pwd) || empty($pwdRepeat)) {
+        $result = true;
+    } else {
+        $result = false;
+    }
+    return $result;
+}
+
+function emptyClubInputSignup($clubName, $postalCode)
+{
+    if (empty($clubName) || empty($postalCode)) {
         $result = true;
     } else {
         $result = false;
@@ -82,6 +95,27 @@ function HumanNameExists($conn, $firstname, $lastname)
         return $result;
     }
 }
+function ClubNameExistss($conn, $clubName)
+{
+    $sql    = "SELECT * FROM club WHERE name = ?;";
+    $stmt   = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../signup.php?error=SELECTFAILED");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "s", $clubName);
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    if ($row = mysqli_fetch_assoc($resultData)) {
+        return $row;
+    } else {
+        $result = false;
+        return $result;
+    }
+}
 
 function createUser($conn, $firstname, $lastname, $username, $password, $email)
 // 
@@ -107,6 +141,55 @@ function createUser($conn, $firstname, $lastname, $username, $password, $email)
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../signup.php?error=none");
+    exit();
+}
+function createClub($conn, $clubName, $postalCode, $userId)
+
+{
+    $sql    = "INSERT INTO club (name, wins, losses, postalcode) VALUES (?, ?, ?, ?);";
+    $stmt   = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../trainer/club_register.php?error=INSERTFAILED");
+        exit();
+    }
+
+    $wins = 0;
+    $losses = 0;
+
+    mysqli_stmt_bind_param($stmt, "siii", $clubName, $wins, $losses, $postalCode);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+
+
+    $highestClubId = -1;
+    $query = $conn->query("SELECT club_id FROM club");
+    while ($row = $query->fetch_assoc()) {
+        if ($row['club_id'] > $highestClubId) {
+            $highestClubId = $row['club_id'];
+        }
+    }
+
+    $highestClubId++;
+
+    /* FUNKTIONIERT IRGENDWIE NICHT :((())) */
+
+    $updateSql    = "UPDATE user SET club_id = ? WHERE user_id = ?";
+    $updateStmt   = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($updateStmt, $updateSql)) {
+        header("location: ../trainer/club_register.php?error=INSERTFAILED");
+        exit();
+    }
+
+
+    mysqli_stmt_bind_param($updateStmt, "ii", $highestClubId, $userId);
+    mysqli_stmt_execute($updateStmt);
+    mysqli_stmt_close($updateStmt);
+
+    /* FUNKTIONIERT IRGENDWIE NICHT :((())) */
+
+
+    header("location: ../trainer/club_register.php?error=none");
     exit();
 }
 
