@@ -102,6 +102,18 @@ include_once 'inc/functions.inc.php';
                 echo "</div>";
                 echo "</div>";
             } else if (strcasecmp($_SESSION['role'], "trainer") == 0) {
+                $username = $_SESSION['username'];
+                echo "<h1>Trainer Panel<h1>";
+                echo "<br>";
+                echo "<h3>Welcome $username !<h3>";
+
+                echo "<div class='club_btn'>
+                    <button class='club__btn'><a href='./trainer/club_register.php'>Register club</a></button>
+                    </div>";
+
+                echo "<div class='calender_btn'>
+                    <button class='calender__btn'><a href='calendar.php'>Calendar</a></button>
+                    </div>";
 
                 echo "Calendar? (a href)";
                 echo "Club anmelden? (Verlinkung zur ner .php datei wo nen Formular ist, wo man die Daten für den Club eingibt.)";
@@ -124,6 +136,7 @@ include_once 'inc/functions.inc.php';
                 echo "<td>Username</td><td>Email</td>";
                 echo "</tr></thead>";
 
+
                 while ($row = $query->fetch_assoc()) {
                     echo "<td>" . $row['username'] . "</td>";
                     echo "<td>" . $row['email'] . "</td>";
@@ -141,6 +154,9 @@ include_once 'inc/functions.inc.php';
                     <button class='login__btn'><a href='login.php'>Log In</a></button>
                     </div>";
         }
+
+
+
 
         ?>
 </body>
