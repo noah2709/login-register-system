@@ -103,7 +103,8 @@ include_once 'inc/functions.inc.php';
                 echo "</div>";
             } else if (strcasecmp($_SESSION['role'], "trainer") == 0) {
 
-                /* Trainer Panel ? So ähnlich wie das User Panel nur mit Calendar function? */
+                echo "Calendar? (a href)";
+                echo "Club anmelden? (Verlinkung zur ner .php datei wo nen Formular ist, wo man die Daten für den Club eingibt.)";
             } else if (strcasecmp($_SESSION['role'], "user") == 0) {
 
 
