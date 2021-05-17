@@ -20,65 +20,92 @@ include_once 'inc/functions.inc.php';
     <div class="header">
         <?php
         if (isset($_SESSION['role'])) {
+            echo "<div class='logout'><button class='logout__btn'><a href='inc/logout.inc.php'>Logout</a></button></div>";
             if (strcasecmp($_SESSION['role'], "admin") == 0) {
-        ?>
-                <div class='logout'><button class='logout__btn'><a href='inc/logout.inc.php'>Logout</a></button></div>
-                <div class="h1">
-                    <h1>Admin Panel</h1>
-                </div>
-                <div class="allboxes">
-                    <div class="boxleft">
-                        <div class="boxtitle">
-                            <p>Benutzer löschen</p><i class="fas fa-user-slash"></i>
-                        </div>
-                        <div class="boxleft_content">
-                            <p>Klicke unten, um zu dem Formular zu gelangen, wo du Benutzer löschen kannst.</p>
-                        </div>
-                        <div class="boxleft_attention">
-                            <p>Achtung! Gelöschte Benutzer können selbst vom Admin nicht wiederhergestellt werden.</p>
-                        </div>
-                        <div class="littlebox">
-                            <a href="./admin/delete.php">
-                                <div class="littlebox_text">
-                                    <p>Zum Formular ≫</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="boxmiddle">
-                        <div class="boxtitle">
-                            <p>Benutzer bearbeiten</p><i class="fas fa-user-edit"></i>
-                        </div>
-                        <div class="boxleft_content">
-                            <p>Klicke unten, um zu dem Formular zu gelangen, wo du Benutzer bearbeiten kannst.</p>
-                        </div>
-                        <div class="littlebox">
-                            <a href="./admin/update.php">
-                                <div class="littlebox_text">
-                                    <p>Zum Formular ≫</p>
-                                </div>
-                            </a>
-                        </div>
 
-                    </div>
-                    <div class="boxright">
-                        <div class="boxtitle">
-                            <p>Benutzer suchen</p><i class="fas fa-search"></i>
-                        </div>
-                        <div class="boxleft_content">
-                            <p>Klicke unten, um zu dem Formular zu gelangen, wo du Benutzer suchen kannst.</p>
-                        </div>
-                        <div class="littlebox">
-                            <a href="./admin/search.php">
-                                <div class="littlebox_text">
-                                    <p>Zum Formular ≫</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-        <?php
-            } else {
+                /* Title */
+                echo "<div class='h1'>";
+                echo "<h1>Admin Panel</h1>";
+                echo "</div>";
+
+                echo "<div class='allboxes'>";
+
+                /* Left box in admin panel */
+                echo "<div class='boxleft'>";
+                echo "<div class='boxtitle'>";
+                echo "<p>Benutzer löschen</p><i class='fas fa-user-slash'></i>";
+                echo "</div>";
+
+                /* Left box content in admin panel */
+                echo "<div class='boxleft_content'>";
+                echo "<p>Klicke unten, um zu dem Formular zu gelangen, wo du Benutzer löschen kannst.</p>";
+                echo "</div>";
+
+                /* Left box content in admin panel */
+                echo "<div class='boxleft_attention'>";
+                echo "<p>Achtung! Gelöschte Benutzer können selbst vom Admin nicht wiederhergestellt werden.</p>";
+                echo "</div>";
+
+                /* Little box inside left box */
+                echo "<div class='littlebox'>";
+                echo "<a href='./admin/delete.php'>";
+                echo "<div class='littlebox_text'>";
+                echo "<p>Zum Formular ≫</p>";
+                echo "</div>";
+                echo "</a>";
+                echo "</div>";
+                echo "</div>";
+
+                /* Middle box - User edit symbol */
+                echo "<div class='boxmiddle'>";
+                echo "<div class='boxtitle'>";
+                echo "<p>Benutzer bearbeiten</p><i class='fas fa-user-edit'></i>";
+                echo "</div>";
+
+                /* Middle box content in admin panel */
+                echo "<div class='boxleft_content'>";
+                echo "<p>Klicke unten, um zu dem Formular zu gelangen, wo du Benutzer bearbeiten kannst.</p>";
+                echo "</div>";
+
+
+                /* Little box content in admin panel */
+                echo "<div class='littlebox'>";
+                echo "<a href='./admin/update.php'>";
+                echo "<div class='littlebox_text'>";
+                echo "<p>Zum Formular ≫</p>";
+                echo "</div>";
+                echo "</a>";
+                echo "</div>";
+                echo "</div>";
+
+
+                /* Right box in admin panel */
+                echo "<div class='boxright'>";
+                echo "<div class='boxtitle'>";
+                echo "<p>Benutzer suchen</p><i class='fas fa-search'></i>";
+                echo "</div>";
+
+                /* Right box content in admin panel */
+                echo "<div class='boxleft_content'>";
+                echo "<p>Klicke unten, um zu dem Formular zu gelangen, wo du Benutzer suchen kannst.</p>";
+                echo "</div>";
+
+                /* Little box inside right box */
+                echo "<div class='littlebox'>";
+                echo "<a href='./admin/search.php'>";
+                echo "<div class='littlebox_text'>";
+                echo "<p>Zum Formular ≫</p>";
+                echo "</div>";
+                echo "</a>";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+            } else if (strcasecmp($_SESSION['role'], "trainer") == 0) {
+
+
+                /* Trainer Panel ? So ähnlich wie das User Panel nur mit Calendar function? */
+            } else if (strcasecmp($_SESSION['role'], "user") == 0) {
+
 
                 $userid = $_SESSION['userid'];
                 $username = $_SESSION['username'];
@@ -104,18 +131,16 @@ include_once 'inc/functions.inc.php';
                     echo "<td>" . $row["5"] . "</td>";
                     echo "</tr>";
                 }
-
-                echo "<div class='logout'><button class='logout__btn'><a href='inc/logout.inc.php'>Logout</a></button></div>";
-            }
-        } else {
-            echo "<h1>Login/Register - System<h1>";
-            echo "<br><br>";
-            echo "<div class='signup'>
+            } else {
+                echo "<h1>Login/Register - System<h1>";
+                echo "<br><br>";
+                echo "<div class='signup'>
                     <button class='signup__btn'><a href='signup.php'>Sign Up</a></button>
                     </div>";
-            echo "<div class='login'>
+                echo "<div class='login'>
                     <button class='login__btn'><a href='login.php'>Log In</a></button>
                     </div>";
+            }
         }
 
         ?>
