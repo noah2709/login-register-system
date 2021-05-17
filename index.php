@@ -13,12 +13,13 @@ include_once 'inc/functions.inc.php';
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/2deba413ff.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
-    <title>Login System</title>
+    <title>Hauptseite</title>
 </head>
 
 <body>
     <div class="header">
         <?php
+
         if (isset($_SESSION['role'])) {
             echo "<div class='logout'><button class='logout__btn'><a href='inc/logout.inc.php'>Logout</a></button></div>";
             if (strcasecmp($_SESSION['role'], "admin") == 0) {
@@ -102,7 +103,6 @@ include_once 'inc/functions.inc.php';
                 echo "</div>";
             } else if (strcasecmp($_SESSION['role'], "trainer") == 0) {
 
-
                 /* Trainer Panel ? So ähnlich wie das User Panel nur mit Calendar function? */
             } else if (strcasecmp($_SESSION['role'], "user") == 0) {
 
@@ -111,10 +111,7 @@ include_once 'inc/functions.inc.php';
                 $username = $_SESSION['username'];
 
                 $sql        = "SELECT * FROM user WHERE user_id = '$userid'";
-                $dbquery    = $conn->prepare($sql);
-                $dbquery->execute();
-                $result     = $dbquery->get_result();
-                $data       = $result->fetch_all();
+                $query = $conn->query($sql);
 
                 echo "<h1>User Panel<h1>";
                 echo "<br>";
@@ -126,21 +123,22 @@ include_once 'inc/functions.inc.php';
                 echo "<td>Username</td><td>Email</td>";
                 echo "</tr></thead>";
 
-                foreach ($data as $row) {
-                    echo "<td>" . $row["1"] . "</td>";
-                    echo "<td>" . $row["5"] . "</td>";
+                while ($row = $query->fetch_assoc()) {
+                    echo "<td>" . $row['username'] . "</td>";
+                    echo "<td>" . $row['email'] . "</td>";
                     echo "</tr>";
                 }
-            } else {
-                echo "<h1>Login/Register - System<h1>";
-                echo "<br><br>";
-                echo "<div class='signup'>
+            }
+        } else {
+
+            echo "<h1>Login/Register - System<h1>";
+            echo "<br><br>";
+            echo "<div class='signup'>
                     <button class='signup__btn'><a href='signup.php'>Sign Up</a></button>
                     </div>";
-                echo "<div class='login'>
+            echo "<div class='login'>
                     <button class='login__btn'><a href='login.php'>Log In</a></button>
                     </div>";
-            }
         }
 
         ?>
