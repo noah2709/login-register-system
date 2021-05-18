@@ -1,5 +1,5 @@
 <?php
-include_once 'db.inc.php';
+require_once 'db.inc.php';
 ?>
 <?php
 
@@ -170,27 +170,94 @@ function createClub($conn, $clubName, $postalCode, $userId)
         }
     }
 
-    $highestClubId++;
-
-    /* FUNKTIONIERT IRGENDWIE NICHT :((())) */
-
-    $updateSql    = "UPDATE user SET club_id = ? WHERE user_id = ?";
-    $updateStmt   = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($updateStmt, $updateSql)) {
-        header("location: ../trainer/club_register.php?error=INSERTFAILED");
-        exit();
-    }
-
-
-    mysqli_stmt_bind_param($updateStmt, "ii", $highestClubId, $userId);
-    mysqli_stmt_execute($updateStmt);
-    mysqli_stmt_close($updateStmt);
-
-    /* FUNKTIONIERT IRGENDWIE NICHT :((())) */
-
+    $updateStmt = $conn->prepare("UPDATE user SET club_id = '$highestClubId' WHERE user_id = '$userId'");
+    $updateStmt->execute();
+    $updateStmt->close();
 
     header("location: ../trainer/club_register.php?error=none");
     exit();
+}
+
+
+function createEvent($conn, $starttime, $endtime, $winner, $club_id1, $club_id2, $court_id)
+{
+
+    $sql = "INSERT INTO event (starttime, endtime, winner, club_id1, club_id2, court_id) VALUES (?,?,?,?,?,?)";
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $conn)) {
+        header("location: ../admin/event.php?error=INSERTFAILED");
+        exit();
+    }
+}
+
+
+function hasClub($conn, $userId)
+{
+    $query = $conn->query("SELECT club_id FROM user WHERE user_id = '$userId'");
+
+    while ($row = $query->fetch_assoc()) {
+        if ($row['club_id'] == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function getClub($conn, $userId)
+{
+    $query = $conn->query("SELECT club_id FROM user WHERE user_id = '$userId'");
+
+    $club_id = null;
+
+    while ($row = $query->fetch_assoc()) {
+        if ($row['club_id'] != NULL) {
+            $club_id = $row['club_id'];
+        }
+    }
+
+    if ($club_id == NULL) {
+        return NULL;
+    }
+
+    $clubQuery = $conn->query("SELECT name FROM club WHERE club_id = '$club_id'");
+    $clubName = "EMPTY";
+
+    while ($row = $clubQuery->fetch_assoc()) {
+        $clubName = $row['name'];
+    }
+    return $clubName;
+}
+
+function getClubIdFromName($conn, $clubName)
+{
+
+    $query = $conn->query("SELECT club_id FROM club WHERE name = '$clubName'");
+
+    $id = -1;
+
+    while ($row = $query->fetch_assoc()) {
+        $id = $row['club_id'];
+    }
+
+    return $id;
+}
+
+function getCourtFromName($conn, $courtName)
+{
+
+    $query = $conn->query("SELECT court_id FROM golfcourt WHERE name = '$courtName'");
+
+    $id = -1;
+
+    while ($row = $query->fetch_assoc()) {
+        $id = $row['court_id'];
+    }
+
+    return $id;
 }
 
 function emptyInputLogin($username, $pwd)

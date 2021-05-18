@@ -42,14 +42,30 @@ include_once 'inc/functions.inc.php';
                 echo "<p>Klicke unten, um zu dem Formular zu gelangen, wo du Benutzer löschen kannst.</p>";
                 echo "</div>";
 
-                /* Left box content in admin panel */
-                echo "<div class='boxleft_attention'>";
-                echo "<p>Achtung! Gelöschte Benutzer können selbst vom Admin nicht wiederhergestellt werden.</p>";
-                echo "</div>";
-
                 /* Little box inside left box */
                 echo "<div class='littlebox'>";
                 echo "<a href='./admin/delete.php'>";
+                echo "<div class='littlebox_text'>";
+                echo "<p>Zum Formular ≫</p>";
+                echo "</div>";
+                echo "</a>";
+                echo "</div>";
+                echo "</div>";
+
+                /* Bottom left in admin panel */
+                echo "<div class='boxbottomleft'>";
+                echo "<div class='boxtitle'>";
+                echo "<p>Event erstellen</p>";
+                echo "</div>";
+
+                /* Bottom left box content in admin panel */
+                echo "<div class='boxbottomleft_content'>";
+                echo "<p>Klicke unten, um zu dem Formular zu gelangen, wo du Events erstellen kannst.</p>";
+                echo "</div>";
+
+                /* Bottom left box inside bottom left box */
+                echo "<div class='littlebox'>";
+                echo "<a href='./admin/event.php'>";
                 echo "<div class='littlebox_text'>";
                 echo "<p>Zum Formular ≫</p>";
                 echo "</div>";
@@ -103,13 +119,21 @@ include_once 'inc/functions.inc.php';
                 echo "</div>";
             } else if (strcasecmp($_SESSION['role'], "trainer") == 0) {
                 $username = $_SESSION['username'];
+                $userid = $_SESSION['userid'];
                 echo "<h1>Trainer Panel<h1>";
                 echo "<br>";
                 echo "<h3>Welcome $username !<h3>";
 
-                echo "<div class='club_btn'>
+                if (hasClub($conn, $userid)) {
+                    $clubName = getClub($conn, $userid);
+                    echo "<h1>Your Club - $clubName <h1>";
+                    echo "<br>";
+                } else {
+                    echo "<div class='club_btn'>
                     <button class='club__btn'><a href='./trainer/club_register.php'>Register club</a></button>
                     </div>";
+                }
+
 
                 echo "<div class='calender_btn'>
                     <button class='calender__btn'><a href='calendar.php'>Calendar</a></button>

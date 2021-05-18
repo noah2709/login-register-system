@@ -163,12 +163,12 @@ input.btn:hover {
 .boxleft {
   display: block;
   width: 450px;
-  height: 500px;
+  height: 250px;
   padding: 40px;
   position: absolute;
   top: 50%;
   left: 20%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -85%);
   text-align: center;
   border: 1px solid rgb(90, 84, 84);
 }
@@ -181,22 +181,46 @@ input.btn:hover {
   text-align: left;
 }
 
-.boxleft_attention {
-  margin-top: 50px;
+.boxbottomleft {
+  display: block;
+  width: 450px;
+  height: 250px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translate(-50%, 25%);
+  text-align: center;
+  border: 1px solid rgb(90, 84, 84);
+}
+
+
+.boxbottomleft_content {
+  font-weight: 500;
   font-size: 20px;
+  margin-top: 50px;
   color: rgb(177, 165, 165);
   text-align: left;
 }
 
+.boxleft_content {
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 50px;
+  color: rgb(177, 165, 165);
+  text-align: left;
+}
+
+
 .boxmiddle {
   display: block;
   width: 450px;
-  height: 500px;
+  height: 250px;
   padding: 40px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -85%);
   text-align: center;
   border: 1px solid rgb(90, 84, 84);
 }
@@ -204,12 +228,12 @@ input.btn:hover {
 .boxright {
   display: block;
   width: 450px;
-  height: 500px;
+  height: 250px;
   padding: 40px;
   position: absolute;
   top: 50%;
   left: 80%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -85%);
   border: 1px solid rgb(90, 84, 84);
   text-align: center;
 }
@@ -339,3 +363,4 @@ input.btn:hover {
 #serachid, #searchuserid, #emailid {
   background-color: rgb(112, 9, 107);
 }
+
