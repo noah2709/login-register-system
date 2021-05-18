@@ -9,6 +9,8 @@ $dbName     = $dbconfig["DBNAME"];
 
 $conn = mysqli_connect($serverName, $dbUsername, $dbPassword, $dbName);
 
+$conn->set_charset("UTF-8");
+
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }

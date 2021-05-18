@@ -185,10 +185,17 @@ function createEvent($conn, $starttime, $endtime, $winner, $club_id1, $club_id2,
     $sql = "INSERT INTO event (starttime, endtime, winner, club_id1, club_id2, court_id) VALUES (?,?,?,?,?,?)";
     $stmt = mysqli_stmt_init($conn);
 
-    if (!mysqli_stmt_prepare($stmt, $conn)) {
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../admin/event.php?error=INSERTFAILED");
         exit();
     }
+
+    mysqli_stmt_bind_param($stmt, "ssiiii", $starttime, $endtime, $winner, $club_id1, $club_id2, $court_id);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    header("location: ../admin/event.php?error=none");
+    exit();
 }
 
 
@@ -223,13 +230,23 @@ function getClub($conn, $userId)
         return NULL;
     }
 
-    $clubQuery = $conn->query("SELECT name FROM club WHERE club_id = '$club_id'");
-    $clubName = "EMPTY";
+    $clubQuery = $conn->query("SELECT * FROM club WHERE club_id = '$club_id'");
 
-    while ($row = $clubQuery->fetch_assoc()) {
-        $clubName = $row['name'];
+    if ($clubQuery->num_rows <= 0) {
+        return null;
     }
-    return $clubName;
+
+    return $clubQuery->fetch_assoc();
+}
+
+function getClubFromClubId($conn, $clubId)
+{
+
+    $clubQuery = $conn->query("SELECT * FROM club WHERE club_id = '$clubId'");
+    if ($clubQuery->num_rows <= 0) {
+        return null;
+    }
+    return $clubQuery->fetch_assoc();
 }
 
 function getClubIdFromName($conn, $clubName)
@@ -260,6 +277,20 @@ function getCourtFromName($conn, $courtName)
     return $id;
 }
 
+function getCourtFromId($conn, $courtId)
+{
+
+    $query = $conn->query("SELECT name FROM golfcourt WHERE court_id = '$courtId'");
+
+    $courtName = -1;
+
+    while ($row = $query->fetch_assoc()) {
+        $courtName = $row['name'];
+    }
+
+    return $courtName;
+}
+
 function emptyInputLogin($username, $pwd)
 {
     if (empty($username) || empty($pwd)) {
@@ -268,6 +299,11 @@ function emptyInputLogin($username, $pwd)
         $result = false;
     }
     return $result;
+}
+
+function sameClubId($clubId1, $clubId2)
+{
+    return $clubId1 == $clubId2;
 }
 
 function loginUser($conn, $username, $pwd)

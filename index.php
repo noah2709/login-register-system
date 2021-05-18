@@ -52,27 +52,6 @@ include_once 'inc/functions.inc.php';
                 echo "</div>";
                 echo "</div>";
 
-                /* Bottom left in admin panel */
-                echo "<div class='boxbottomleft'>";
-                echo "<div class='boxtitle'>";
-                echo "<p>Event erstellen</p>";
-                echo "</div>";
-
-                /* Bottom left box content in admin panel */
-                echo "<div class='boxbottomleft_content'>";
-                echo "<p>Klicke unten, um zu dem Formular zu gelangen, wo du Events erstellen kannst.</p>";
-                echo "</div>";
-
-                /* Bottom left box inside bottom left box */
-                echo "<div class='littlebox'>";
-                echo "<a href='./admin/event.php'>";
-                echo "<div class='littlebox_text'>";
-                echo "<p>Zum Formular ≫</p>";
-                echo "</div>";
-                echo "</a>";
-                echo "</div>";
-                echo "</div>";
-
                 /* Middle box - User edit symbol */
                 echo "<div class='boxmiddle'>";
                 echo "<div class='boxtitle'>";
@@ -122,12 +101,48 @@ include_once 'inc/functions.inc.php';
                 $userid = $_SESSION['userid'];
                 echo "<h1>Trainer Panel<h1>";
                 echo "<br>";
-                echo "<h3>Welcome $username !<h3>";
+                echo "<h3>Willkommen Trainer $username !<h3>";
 
                 if (hasClub($conn, $userid)) {
-                    $clubName = getClub($conn, $userid);
-                    echo "<h1>Your Club - $clubName <h1>";
+                    $club = getClub($conn, $userid);
+                    $clubName = $club['name'];
+                    $wins = $club['wins'];
+                    $losses = $club['losses'];
+                    $postalcode = $club['postalcode'];
+                    echo "Dein Club: $clubName <br>";
+                    echo "Spiele gewonnen: $wins <br>";
+                    echo "Spiele verloren: $losses <br>";
+                    echo "Postalcode: $postalcode <br>";
+
+
+                    echo "<div class='next_game_btn'>
+                    <button class='next_game__btn'><a href='./trainer/club_events.php'>Ihre nächsten Wettkämpfe</a></button>
+                    </div>";
+                    echo "<div class='reserve_golfcourt_btn'>
+                    <button class='reserve_golfcourt__btn'><a href='./trainer/golfcourt/reverse_golfcourt.php'>Golfplatz reservieren</a></button>
+                    </div>";
                     echo "<br>";
+
+                    /* Bottom left in trainer panel */
+                    echo "<div class='boxbottomleft'>";
+                    echo "<div class='boxbottomleft_boxtitle'>";
+                    echo "<p>Wettkampf eintragen</p>";
+                    echo "</div>";
+
+                    /* Bottom left box content in trainer panel */
+                    echo "<div class='boxbottomleft_content'>";
+                    echo "<p>Klicke unten, um zu dem Formular zu gelangen, wo du Wettkämpfe eintragen kannst.</p>";
+                    echo "</div>";
+
+                    /* Bottom left box inside bottom left box */
+                    echo "<div class='boxbottomleft_littlebox'>";
+                    echo "<a href='./admin/event.php'>";
+                    echo "<div class='boxbottomleft_littlebox_text'>";
+                    echo "<p>Zum Formular ≫</p>";
+                    echo "</div>";
+                    echo "</a>";
+                    echo "</div>";
+                    echo "</div>";
                 } else {
                     echo "<div class='club_btn'>
                     <button class='club__btn'><a href='./trainer/club_register.php'>Register club</a></button>
@@ -139,8 +154,7 @@ include_once 'inc/functions.inc.php';
                     <button class='calender__btn'><a href='calendar.php'>Calendar</a></button>
                     </div>";
 
-                echo "Calendar? (a href)";
-                echo "Club anmelden? (Verlinkung zur ner .php datei wo nen Formular ist, wo man die Daten für den Club eingibt.)";
+                echo "Calendar? @Noah? (a href)";
             } else if (strcasecmp($_SESSION['role'], "user") == 0) {
 
 

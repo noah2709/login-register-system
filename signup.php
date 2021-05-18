@@ -71,6 +71,9 @@
                     <label>Repeat Password</label>
                 </div>
                 <input type="submit" class="btn" name="submit" value="Sign Up">
+                <div class="signup__link">
+                    Alreay member? <a href="./login.php">Log In</a>
+                </div>
             </form>
         </section>
     </div>

@@ -5,8 +5,8 @@ if (isset($_POST["event_submit"])) {
     require_once 'db.inc.php';
     require_once 'functions.inc.php';
 
-    $start   = mysqli_real_escape_string($conn, $_POST["starttime"]);
-    $end      = mysqli_real_escape_string($conn, $_POST["endtime"]);
+    $start = date("Y-m-d H:i:s", strtotime(mysqli_real_escape_string($conn, $_POST["starttime"])));
+    $end = date("Y-m-d H:i:s", strtotime(mysqli_real_escape_string($conn, $_POST["endtime"])));
     $club_one      = mysqli_real_escape_string($conn, $_POST["club_one"]);
     $club_two      = mysqli_real_escape_string($conn, $_POST["club_two"]);
     $golfcourt      = mysqli_real_escape_string($conn, $_POST["town"]);
@@ -17,6 +17,10 @@ if (isset($_POST["event_submit"])) {
     $clubId_two = getClubIdFromName($conn, $club_two);
     $golfCourtId = getCourtFromName($conn, $golfcourt);
 
+    if (sameClubId($clubId_one, $clubId_two)) {
+        header("location: ../admin/event.php?error=SAMEID");
+        exit();
+    }
 
     createEvent($conn, $start, $end, $winner, $clubId_one, $clubId_two,  $golfCourtId);
 } else {

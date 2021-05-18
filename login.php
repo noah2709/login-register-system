@@ -38,7 +38,7 @@
                 </div>
                 <input type="submit" class="btn" name="submit" value="Login">
                 <div class="signup__link">
-                    Not a member ? <a href="./signup.php">Signup</a>
+                    Not a member? <a href="./signup.php">Signup</a>
                 </div>
             </form>
 
