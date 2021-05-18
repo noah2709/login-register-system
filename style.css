@@ -2,14 +2,19 @@ body {
     margin: 0;
     padding: 0;
     font-family: montserrat;
-    background: #fc466b; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #fc466b, #3f5efb); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #fc466b, #3f5efb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     height: 100vh;
     overflow: hidden;
     text-decoration: none;
     box-sizing: border-box;
 }
+
+/*
+
+    background: #fc466b; 
+    background: -webkit-linear-gradient(to right, #fc466b, #3f5efb); 
+    background: linear-gradient(to right, #fc466b, #3f5efb); 
+*/
+
 .center {
     position: absolute;
     top: 50%;
@@ -173,6 +178,20 @@ input.btn:hover {
   border: 1px solid rgb(90, 84, 84);
 }
 
+.wettkampf_border {
+  display: block;
+  width: 450px;
+  height: 500px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border: 1px solid rgb(90, 84, 84);
+}
+
+
 .boxleft_content {
   font-weight: 500;
   font-size: 20px;
@@ -181,15 +200,15 @@ input.btn:hover {
   text-align: left;
 }
 
+
 .boxbottomleft {
   display: block;
   width: 450px;
   height: 250px;
   padding: 40px;
   position: absolute;
+  bottom: 0%;
   top: 50%;
-  left: 20%;
-  transform: translate(-50%, 25%);
   text-align: center;
   border: 1px solid rgb(90, 84, 84);
 }
@@ -199,9 +218,25 @@ input.btn:hover {
   font-weight: 500;
   font-size: 20px;
   margin-top: 50px;
-  color: rgb(177, 165, 165);
+  color: rgb(0, 0, 0);
   text-align: left;
 }
+
+.starttime_text {
+  color: red;
+  font-size: 170%;
+  font-weight: 600;
+  margin-top: -5%;
+  margin-bottom: -2%;
+}
+
+.endtime_text {
+  color: red;
+  font-size: 170%;
+  font-weight: 600;
+  margin-bottom: -2%;
+}
+
 
 .boxleft_content {
   font-weight: 500;
