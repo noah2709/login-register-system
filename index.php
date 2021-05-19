@@ -151,10 +151,8 @@ include_once 'inc/functions.inc.php';
 
 
                 echo "<div class='calender_btn'>
-                    <button class='calender__btn'><a href='calendar.php'>Calendar</a></button>
+                    <button class='calender__btn'><a href='./calendar/calendar.php'>Alle Termine</a></button>
                     </div>";
-
-                echo "Calendar? @Noah? (a href)";
             } else if (strcasecmp($_SESSION['role'], "user") == 0) {
 
 
@@ -180,6 +178,10 @@ include_once 'inc/functions.inc.php';
                     echo "<td>" . $row['email'] . "</td>";
                     echo "</tr>";
                 }
+                echo "<br><br>";
+                echo "<div class='calender_btn'>
+                    <button class='calender__btn'><a href='./calendar/calendar.php'>Alle Termine</a></button>
+                    </div>";
             }
         } else {
 

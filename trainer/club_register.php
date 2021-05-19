@@ -1,3 +1,9 @@
+<?php
+
+require_once '../inc/db.inc.php';
+
+?>
+
 <html lang="en">
 
 <head>
@@ -14,14 +20,8 @@
         if (isset($_GET['error'])) {
             if ($_GET['error'] == "emptyinput") {
                 echo "<p id='warning_input'>Fill in all fields!</p>";
-            } else if ($_GET['error'] == "invalidusername") {
-                echo "<p id='error_pwd'>Choose a proper username!</p>";
-            } else if ($_GET['error'] == "invalidemail") {
-                echo "<p id='error_pwd'>Choose a proper Email!</p>";
-            } else if ($_GET['error'] == "usernametaken") {
-                echo "<p id='error_pwd'>That username already exists!</p>";
-            } else if ($_GET['error'] == "passworddontmatch") {
-                echo "<p id='error_pwd'>Passwords doesn't match</p>";
+            } else if ($_GET['error'] == "clubexist") {
+                echo "<p id='error_pwd'>Clubname already taken!</p>";
             } else if ($_GET['error'] == "SELECTFAILED") {
                 echo "<p id='error_pwd'>Something went wrong, try again</p>";
                 echo "<br><br>";
@@ -38,7 +38,7 @@
     </div>
     <div class="center">
         <section class="input__form">
-            <h1>Sign Up</h1>
+            <h1>Club Sign Up</h1>
             <form action="../inc/club_signup.inc.php" method="POST">
                 <div class="text__field">
                     <input type="text" name="name" required>
@@ -46,9 +46,15 @@
                     <label>Club-Name</label>
                 </div>
                 <div class="text__field">
-                    <input type="text" name="postalcode" required>
-                    <span></span>
-                    <label>Postalcode</label>
+                    <?php
+                    echo '<select name="postalcode" id="dropDown">';
+                    $query = $conn->query("SELECT name FROM town");
+                    while ($row = $query->fetch_assoc()) {
+                        echo "<option name='postalcode' value='" . $row['name'] . "'>" . $row['name'] . "</option>";
+                    }
+                    echo "<span></span>";
+                    echo "</select> <br>";
+                    ?>
                 </div>
                 <input type="submit" class="btn" name="submit" value="Sign Up">
             </form>

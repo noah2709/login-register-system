@@ -16,6 +16,8 @@
                 echo "<p id='warning_input'>Fill in all fields!</p>";
             } else if ($_GET['error'] == "invalidusername") {
                 echo "<p id='error_pwd'>Choose a proper username!</p>";
+            } else if ($_GET['error'] == "humanexist") {
+                echo "<p id='error_pwd'>Firstname / Lastname already taken!</p>";
             } else if ($_GET['error'] == "invalidemail") {
                 echo "<p id='error_pwd'>Choose a proper Email!</p>";
             } else if ($_GET['error'] == "usernametaken") {

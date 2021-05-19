@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
 
                     ?>
 
-                    <input type="submit" name="event_submit" value="Event erstellen">
+                    <input type="submit" name="event_submit" value="Wettkampf erstellen">
 
                 </div>
 

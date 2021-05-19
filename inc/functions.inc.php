@@ -95,7 +95,7 @@ function HumanNameExists($conn, $firstname, $lastname)
         return $result;
     }
 }
-function ClubNameExistss($conn, $clubName)
+function ClubNameExists($conn, $clubName)
 {
     $sql    = "SELECT * FROM club WHERE name = ?;";
     $stmt   = mysqli_stmt_init($conn);
@@ -116,6 +116,8 @@ function ClubNameExistss($conn, $clubName)
         return $result;
     }
 }
+
+
 
 function createUser($conn, $firstname, $lastname, $username, $password, $email)
 // 
@@ -174,7 +176,7 @@ function createClub($conn, $clubName, $postalCode, $userId)
     $updateStmt->execute();
     $updateStmt->close();
 
-    header("location: ../trainer/club_register.php?error=none");
+    header("location: ../index.php?error=none");
     exit();
 }
 
@@ -249,6 +251,19 @@ function getClubFromClubId($conn, $clubId)
     return $clubQuery->fetch_assoc();
 }
 
+function getTownIdFromName($conn, $townName)
+{
+    $query = $conn->query("SELECT postalcode FROM town WHERE name ='$townName'");
+    if ($query->num_rows <= 0) {
+        return null;
+    }
+    $id = -1;
+    while ($row = $query->fetch_assoc()) {
+        $id = $row['postalcode'];
+    }
+    return $id;
+}
+
 function getClubIdFromName($conn, $clubName)
 {
 
@@ -275,6 +290,19 @@ function getCourtFromName($conn, $courtName)
     }
 
     return $id;
+}
+
+function canDeleteReserve($conn, $court_id, $club_id)
+{
+    $query = $conn->query("SELECT club_id FROM reserve WHERE court_id = '$court_id'");
+
+    $clubIdFromDatabase = -1;
+
+    while ($row = $query->fetch_assoc()) {
+        $clubIdFromDatabase = $row['club_id'];
+    }
+
+    return $clubIdFromDatabase == $club_id;
 }
 
 function getCourtFromId($conn, $courtId)
