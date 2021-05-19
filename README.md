@@ -4,9 +4,10 @@ A simple login-register system for our final project in our database course
 ## Todo
 
 - [x] Update the inc.db.php to read the .env correct
-- [ ] Update the index.php to create fitting sessions for user-roles
+- [x] Update the index.php to create fitting sessions for user-roles
 - [x] Update the login form
 - [x] Update the register form
-- [ ] Create the Calendar for Events
+- [x] Create the Calendar for Events
 - [ ] Create the User-Panel
 - [ ] Create the Admin-Panel
+- [ ] Create the Trainer-Panel

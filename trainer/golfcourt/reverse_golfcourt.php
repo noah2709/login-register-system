@@ -6,8 +6,8 @@ session_start();
 <html>
 
 <head>
-    <title>Calendar</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+    <title>Golfplatz reservieren</title>
+    <link rel="stylesheet" href="../../fullcalender.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -37,19 +37,13 @@ session_start();
                 selectable: true,
                 selectHelper: true,
                 dayClick: function(date, allDay, jsEvent, view) {
-                    // if (IsDateHasEvent(date)) {
-                    // t = true;
-                    // } else {
-                    // t = false;
-                    // }
+                    // t = IsDateHasEvent(date);
                 },
                 select: function(start, end, allDay) {
-                    if (t) {
-                        return;
-                    }
+                    // if (t) return;
                     var title = prompt("Geben Sie ihren Club-Namen ein & den Golfplatz-Namen.");
-                    var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
-                    var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+                    var start = $.fullCalendar.formatDate(start, "Y-MM-DD");
+                    var end = $.fullCalendar.formatDate(end, "Y-MM-DD");
                     if (title) {
                         $.ajax({
                             url: "reverse_golfcourt_insert.php",
@@ -67,38 +61,31 @@ session_start();
                     }
                 },
                 editable: true,
-                // eventResize: function(event) {
-                //     var title = event.title;
-                //     var id = event.id;
-                //     console.log("title: " + title);
-                //     console.log("id: " + id);
-                //     $.ajax({
-                //         url: "update.php",
-                //         type: "POST",
-                //         data: {
-                //             title: title,
-                //             start: start,
-                //             end: end,
-                //             id: id
-                //         },
-                //         success: function() {
-                //             calendar.fullCalendar('refetchEvents');
-                //             alert('Event Update');
-                //         }
-                //     })
-                // },
                 eventClick: function(event) {
                     if (confirm("Möchtest du die Reservierung wirklich löschen?")) {
                         var court_id = event.court_id;
+
                         $.ajax({
-                            url: "reverse_golfcourt_delete.php",
+                            url: "reverse_golfcourt_check.php",
                             type: "POST",
                             data: {
                                 court_id: court_id
                             },
+                            error: function(jqXHR, exception) {
+                                alert("Du hast keine Berechtigung, diese Reservierung zu löschen, da sie nicht von dir erstellt wurde.");
+                            },
                             success: function() {
-                                calendar.fullCalendar('refetchEvents');
-                                alert("Reservierung entfernt");
+                                $.ajax({
+                                    url: "reverse_golfcourt_delete.php",
+                                    type: "POST",
+                                    data: {
+                                        court_id: court_id
+                                    },
+                                    success: function() {
+                                        calendar.fullCalendar('refetchEvents');
+                                        alert("Reservierung entfernt");
+                                    }
+                                })
                             }
                         })
                     }
@@ -109,6 +96,9 @@ session_start();
 </head>
 
 <body>
+    <form action="../../index.php" class="backform">
+        <input type="submit" name="submit" value="Zurück">
+    </form>
     <br />
     <h2 align="center">Golfplatz reservieren</h2>
     <br />
