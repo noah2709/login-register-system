@@ -109,11 +109,12 @@ include_once 'inc/functions.inc.php';
                     $wins = $club['wins'];
                     $losses = $club['losses'];
                     $postalcode = $club['postalcode'];
+                    $token = $club['token'];
                     echo "Dein Club: $clubName <br>";
                     echo "Spiele gewonnen: $wins <br>";
                     echo "Spiele verloren: $losses <br>";
                     echo "Postalcode: $postalcode <br>";
-
+                    echo "Ihr Token: $token <br>";
 
                     echo "<div class='next_game_btn'>
                     <button class='next_game__btn'><a href='./trainer/club_events.php'>Ihre nächsten Wettkämpfe</a></button>
@@ -122,7 +123,6 @@ include_once 'inc/functions.inc.php';
                     <button class='reserve_golfcourt__btn'><a href='./trainer/golfcourt/reverse_golfcourt.php'>Golfplatz reservieren</a></button>
                     </div>";
                     echo "<br>";
-
                     /* Bottom left in trainer panel */
                     echo "<div class='boxbottomleft'>";
                     echo "<div class='boxbottomleft_boxtitle'>";
@@ -172,6 +172,17 @@ include_once 'inc/functions.inc.php';
                 echo "<td>Username</td><td>Email</td>";
                 echo "</tr></thead>";
 
+                if (hasClub($conn, $userid)) {
+                    echo "<div class='next_game_btn'>
+                    <button class='next_game__btn'><a href='./trainer/club_events.php'>Ihre nächsten Wettkämpfe</a></button>
+                    </div>";
+                } else {
+
+                    echo "<div class='invite_btn'>
+                    <button class='calender__btn'><a href='./trainer/club_enter.php'>Club beitreten</a></button>
+                    </div>";
+                }
+
 
                 while ($row = $query->fetch_assoc()) {
                     echo "<td>" . $row['username'] . "</td>";
@@ -196,9 +207,9 @@ include_once 'inc/functions.inc.php';
         }
 
 
-
-
         ?>
+
+
 </body>
 
 </html>

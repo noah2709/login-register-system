@@ -117,7 +117,39 @@ function ClubNameExists($conn, $clubName)
     }
 }
 
+function tokenExists($conn, $token)
+{
 
+    $sql = "SELECT * FROM club WHERE token = '$token'";
+    $stmt = $conn->query($sql);
+
+    return $stmt->num_rows >= 1;
+}
+
+function enterClub($conn, $club_id, $user_id)
+{
+
+    $token = generateToken(9);
+
+    $updateTokenStmt = $conn->prepare("UPDATE club SET token = '$token' WHERE club_id = '$club_id'");
+    $updateTokenStmt->execute();
+    $updateTokenStmt->close();
+
+    $updateStmt = $conn->prepare("UPDATE user SET club_id = '$club_id' WHERE user_id = '$user_id'");
+    $updateStmt->execute();
+    $updateStmt->close();
+}
+
+function generateToken($length)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
 
 function createUser($conn, $firstname, $lastname, $username, $password, $email)
 // 

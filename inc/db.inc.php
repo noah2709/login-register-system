@@ -20,7 +20,7 @@ if (!$conn) {
 
 $conn->query("CREATE TABLE IF NOT EXISTS town (postalcode int NOT NULL, name VARCHAR(50), PRIMARY KEY (postalcode))");
 
-$conn->query("CREATE TABLE IF NOT EXISTS club (club_id int NOT NULL AUTO_INCREMENT, name VARCHAR(50), wins int, losses int, postalcode int, PRIMARY KEY (club_id), FOREIGN KEY (postalcode) REFERENCES town(postalcode))");
+$conn->query("CREATE TABLE IF NOT EXISTS club (club_id int NOT NULL AUTO_INCREMENT, name VARCHAR(50), wins int, losses int, postalcode int, token text, PRIMARY KEY (club_id), FOREIGN KEY (postalcode) REFERENCES town(postalcode))");
 
 $conn->query("CREATE TABLE IF NOT EXISTS role (role_id int NOT NULL, role_name VARCHAR(50), PRIMARY KEY (role_id))");
 
