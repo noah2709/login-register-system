@@ -13,3 +13,5 @@ A simple login-register system for our final project in our database course
 - [ ] Create the User-Panel
 - [ ] Create the Admin-Panel
 - [ ] Create the Trainer-Panel
+
+
