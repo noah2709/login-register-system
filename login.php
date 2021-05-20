@@ -24,7 +24,7 @@
     </div>
     <div class="center">
         <section class="input__form">
-            <h1>Log In</h1>
+            <h1>Einloggen</h1>
             <form action="../login-register-system/inc/login.inc.php" method="POST">
                 <div class="text__field">
                     <input type="text" name="username" required>
@@ -38,7 +38,7 @@
                 </div>
                 <input type="submit" class="btn" name="submit" value="Login">
                 <div class="signup__link">
-                    Kein Account? <a href="./signup.php">Signup</a>
+                    Kein Account? <a href="./signup.php">Registrieren</a>
                 </div>
             </form>
 

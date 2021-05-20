@@ -72,9 +72,9 @@
                     <span></span>
                     <label>Wiederhole Passwort</label>
                 </div>
-                <input type="submit" class="btn" name="submit" value="Sign Up">
+                <input type="submit" class="btn" name="submit" value="Registrieren">
                 <div class="signup__link">
-                    Bereits einen Account? <a href="./login.php">Log In</a>
+                    Bereits einen Account? <a href="./login.php">Einloggen</a>
                 </div>
             </form>
         </section>
