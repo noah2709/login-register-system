@@ -1,11 +1,13 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: montserrat;
+    font-family: "Ubuntu" ,sans-serif;
     height: 100vh;
     overflow: hidden;
     text-decoration: none;
     box-sizing: border-box;
+    list-style: none;
+    background: rgb(42, 42, 41);
 }
 
 /*
@@ -201,27 +203,6 @@ input.btn:hover {
 }
 
 
-.boxbottomleft {
-  display: block;
-  width: 450px;
-  height: 250px;
-  padding: 40px;
-  position: absolute;
-  bottom: 0%;
-  top: 50%;
-  text-align: center;
-  border: 1px solid rgb(90, 84, 84);
-}
-
-
-.boxbottomleft_content {
-  font-weight: 500;
-  font-size: 20px;
-  margin-top: 50px;
-  color: rgb(0, 0, 0);
-  text-align: left;
-}
-
 .starttime_text {
   color: red;
   font-size: 170%;
@@ -399,3 +380,220 @@ input.btn:hover {
   background-color: rgb(112, 9, 107);
 }
 
+.index_header h1 {
+  text-align: center;
+  margin: 1px auto;
+  color: rgba(255, 255, 255, 0.452);
+}
+
+.inner-width{
+  max-width: 80%;
+  display: flex;
+}
+
+.menu-icon {
+  margin-left: 100%;
+  padding: 14px 20px;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.menu-icon:hover{
+  opacity: 0.9;
+  transform: scale(1.15);
+}
+
+.menu-icon.active {
+  color: #2c3a47;
+  z-index: 100;
+}
+
+.menu-icon.active i {
+  font-size: 30px;
+  background: rgba(255, 255, 255, 0.212);
+}
+
+.menu-icon i {
+  width: 50px;
+  height: 50px;
+  background: #2c3a47;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  z-index: 2;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .2s linear;
+}
+
+.navigation-menu{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #2c3a4769;
+  top: 0;
+  right: -100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .6s;
+}
+
+.navigation-menu nav{
+  display: grid;
+}
+
+.navigation-menu li{
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.navigation-menu a{
+  color: #fff;
+  font-size: 40px;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  transform: translateY(40px);
+  z-index: 100;
+}
+
+.navigation-menu a::before{
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 10px;
+  background: #fd7474;
+  bottom: 0;
+  left: 0;
+  border-radius: 15px;
+  z-index: -1;
+  transition: .2s linear;
+}
+
+.navigation-menu a:hover::before{
+  width: 100%;
+}
+
+p{
+  max-width: 80%;
+  margin: auto;
+  padding: 40px 0;
+  font-size: 18px;
+  line-height: 1.4em;
+  text-align: justify;
+}
+
+.navigation-menu.active{
+  right: 0;
+}
+
+.navigation-menu.active a{
+  transform: translateY(0);
+  transition: .6s linear;
+}
+
+.navigation.active {
+  visibility: hidden;
+}
+
+.slides img.active {
+  opacity: 0.1;
+  transition: 1s;
+  z-index: 100;
+}
+
+.slides img:not(.active){
+  opacity: 1;
+  transition: 1s;
+}
+
+.middle.active {
+  z-index: -1;
+}
+
+.navigation-menu.active li:nth-child(1) a{
+  transition-delay: .2s;
+}
+
+.navigation-menu.active li:nth-child(2) a{
+  transition-delay: .4s;
+}
+
+.navigation-menu.active li:nth-child(3) a{
+  transition-delay: .6s;
+}
+
+.navigation-menu.active li:nth-child(4) a{
+  transition-delay: .8s;
+}
+
+.navigation-menu.active li:nth-child(5) a{
+  transition-delay: 1s;
+}
+
+.slidershow {
+  width: 70%;
+  height: 70%;
+  overflow: hidden;
+}
+
+.middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 3px solid white;
+  border-radius: 35px;
+}
+
+.navigation {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+.bar {
+  width: 200px;
+  height: 40px;
+  border: 2px solid black;
+  margin: 6px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.bar:hover{
+  background: rgba(255, 255, 255, 0.418);
+  transition: 0.8s;
+}
+
+.slides {
+  width: 500%;
+  height: 100%;
+  display: flex;
+}
+
+.slide{
+  width: 20%;
+  transition: 0.6s;
+}
+.slide img{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+#r1:checked ~ .s1 {
+  margin-left: 0;
+}
+
+#r2:checked ~ .s2 {
+  margin-left: -20%;
+}
+
+#r3:checked ~ .s3 {
+  margin-left: -40%;
+}
