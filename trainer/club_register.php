@@ -11,7 +11,7 @@ require_once '../inc/db.inc.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
-    <title>Club Anmelden</title>
+    <title>Club Registrieren</title>
 </head>
 
 <body>
@@ -19,19 +19,19 @@ require_once '../inc/db.inc.php';
         <?php
         if (isset($_GET['error'])) {
             if ($_GET['error'] == "emptyinput") {
-                echo "<p id='warning_input'>Fill in all fields!</p>";
+                echo "<p id='warning_input'>Fülle bitte alle Felder aus!</p>";
             } else if ($_GET['error'] == "clubexist") {
-                echo "<p id='error_pwd'>Clubname already taken!</p>";
+                echo "<p id='error_pwd'>Dieser Clubname ist bereits vergeben!</p>";
             } else if ($_GET['error'] == "SELECTFAILED") {
-                echo "<p id='error_pwd'>Something went wrong, try again</p>";
+                echo "<p id='error_pwd'>Irgendetwas ist schiefgelauen, probiere nochmal.</p>";
                 echo "<br><br>";
                 echo "Error Code: 1";
             } else if ($_GET['error'] == "INPUTFAILED") {
-                echo "<p id='error_pwd'>Something went wrong, try again</p>";
+                echo "<p id='error_pwd'>Irgendetwas ist schiefgelauen, probiere nochmal.</p>";
                 echo "<br><br>";
                 echo "Error Code: 2";
             } else if ($_GET['error'] == "none") {
-                echo "<p id='succes'>Succesfully signed up!</p>";
+                echo "<p id='succes'>Club erfolgreich registriert!</p>";
             }
         }
         ?>
@@ -43,7 +43,7 @@ require_once '../inc/db.inc.php';
                 <div class="text__field">
                     <input type="text" name="name" required>
                     <span></span>
-                    <label>Club-Name</label>
+                    <label>Clubname</label>
                 </div>
                 <div class="text__field">
                     <?php
@@ -56,7 +56,7 @@ require_once '../inc/db.inc.php';
                     echo "</select> <br>";
                     ?>
                 </div>
-                <input type="submit" class="btn" name="submit" value="Sign Up">
+                <input type="submit" class="btn" name="submit" value="Club registrieren">
             </form>
         </section>
     </div>

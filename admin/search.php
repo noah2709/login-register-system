@@ -24,8 +24,8 @@ require_once '../inc/db.inc.php';
                     <th>ID</th>
                     <th>Vorname</th>
                     <th>Nachname</th>
-                    <th>Username</th>
-                    <th>EMail</th>
+                    <th>Benutzername</th>
+                    <th>E-Mail</th>
                 </tr>
             </thead>
             <tbody>

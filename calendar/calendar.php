@@ -30,7 +30,7 @@ session_start();
                     var start = (event.start == null ? "Unbekannt" : $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss"));
                     var end = (event.end == null ? "Unbekannt" : $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss"));
                     var title = event.title;
-                    prompt("Start: " + start + " | Ende: " + end + " | Title: " + title);
+                    prompt("Start: " + start + " | Ende: " + end + " | Titel: " + title);
                 },
             });
         });

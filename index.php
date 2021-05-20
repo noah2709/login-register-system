@@ -21,7 +21,7 @@ include_once 'inc/functions.inc.php';
         <?php
 
         if (isset($_SESSION['role'])) {
-            echo "<div class='logout'><button class='logout__btn'><a href='inc/logout.inc.php'>Logout</a></button></div>";
+            echo "<div class='logout'><button class='logout__btn'><a href='inc/logout.inc.php'>Ausloggen</a></button></div>";
             if (strcasecmp($_SESSION['role'], "admin") == 0) {
 
                 /* Title */
@@ -145,7 +145,7 @@ include_once 'inc/functions.inc.php';
                     echo "</div>";
                 } else {
                     echo "<div class='club_btn'>
-                    <button class='club__btn'><a href='./trainer/club_register.php'>Register club</a></button>
+                    <button class='club__btn'><a href='./trainer/club_register.php'>Club registrieren</a></button>
                     </div>";
                 }
 
@@ -164,12 +164,12 @@ include_once 'inc/functions.inc.php';
 
                 echo "<h1>User Panel<h1>";
                 echo "<br>";
-                echo "<h3>Welcome $username !<h3>";
+                echo "<h3>Willkommen $username !<h3>";
                 echo "<br><br>";
 
                 echo "<table class= 'query_table' method='POST' id='query_table'>";
                 echo "<thead><tr>";
-                echo "<td>Username</td><td>Email</td>";
+                echo "<td>Benutzername</td><td>E-Mail</td>";
                 echo "</tr></thead>";
 
                 if (hasClub($conn, $userid)) {
@@ -199,10 +199,10 @@ include_once 'inc/functions.inc.php';
             echo "<h1>Login/Register - System<h1>";
             echo "<br><br>";
             echo "<div class='signup'>
-                    <button class='signup__btn'><a href='signup.php'>Sign Up</a></button>
+                    <button class='signup__btn'><a href='signup.php'>Registrieren</a></button>
                     </div>";
             echo "<div class='login'>
-                    <button class='login__btn'><a href='login.php'>Log In</a></button>
+                    <button class='login__btn'><a href='login.php'>Anmelden</a></button>
                     </div>";
         }
 

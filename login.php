@@ -13,11 +13,11 @@
         <?php
         if (isset($_GET['error'])) {
             if ($_GET['error'] == "emptyinput") {
-                echo "<div id='warning_input'>Fill in all fields!</div>";
+                echo "<div id='warning_input'>Fülle bitte alle Felder aus!</div>";
             } else if ($_GET['error'] == "wronglogin1") {
-                echo "<div id='error_pwd'>Your username or password were wrong!</div>";
+                echo "<div id='error_pwd'>Dein Passwort oder Benutzername ist falsch!</div>";
             } else if ($_GET['error'] == "wronglogin2") {
-                echo "<div id='error_wpwd'>Your username or password were wrong!</div>";
+                echo "<div id='error_wpwd'>Dein Passwort oder Benutzername ist falsch!</div>";
             }
         }
         ?>
@@ -29,16 +29,16 @@
                 <div class="text__field">
                     <input type="text" name="username" required>
                     <span></span>
-                    <label>Username/Email</label>
+                    <label>Benutzername/E-Mail</label>
                 </div>
                 <div class="text__field">
                     <input type="password" name="pwd" required>
                     <span></span>
-                    <label>Password</label>
+                    <label>Passwort</label>
                 </div>
                 <input type="submit" class="btn" name="submit" value="Login">
                 <div class="signup__link">
-                    Not a member? <a href="./signup.php">Signup</a>
+                    Kein Account? <a href="./signup.php">Signup</a>
                 </div>
             </form>
 

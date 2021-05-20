@@ -41,23 +41,23 @@ if (isset($_POST['submit'])) {
         if (isset($_GET['error'])) {
 
             if ($_GET['error'] == "emptyinput") {
-                echo "<p id='warning_input'>Fill in all fields!</p>";
+                echo "<p id='warning_input'>Fülle bitte alle Felder aus!</p>";
             } else if ($_GET['error'] == "INVALIDSTART") {
-                echo "<p id='error_pwd'>Select a start!</p>";
+                echo "<p id='error_pwd'>Bitte wähle eine Startzeit aus!</p>";
             } else if ($_GET['error'] == "SAMEID") {
-                echo "<p id='error_pwd'>Choose different clubs!</p>";
+                echo "<p id='error_pwd'>Bitte wähle unterschiedliche Clubs!</p>";
             } else if ($_GET['error'] == "INVALIDEND") {
-                echo "<p id='error_pwd'>Select a end!</p>";
+                echo "<p id='error_pwd'>Bitte wähle eine Endzeit aus!</p>";
             } else if ($_GET['error'] == "SELECTFAILED") {
-                echo "<p id='error_pwd'>Something went wrong, try again</p>";
+                echo "<p id='error_pwd'>Irgendetwas ist schiefgelauen, probiere nochmal.</p>";
                 echo "<br><br>";
                 echo "Error Code: 1";
             } else if ($_GET['error'] == "INPUTFAILED") {
-                echo "<p id='error_pwd'>Something went wrong, try again</p>";
+                echo "<p id='error_pwd'>Irgendetwas ist schiefgelauen, probiere nochmal.</p>";
                 echo "<br><br>";
                 echo "Error Code: 2";
             } else if ($_GET['error'] == "none") {
-                echo "<p id='succes'>Event succesfully created!</p>";
+                echo "<p id='succes'>Wettkampf erfolgreich eingetragen!</p>";
             }
         }
         ?>

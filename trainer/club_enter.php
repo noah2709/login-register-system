@@ -13,33 +13,33 @@
         <?php
         if (isset($_GET['error'])) {
             if ($_GET['error'] == "emptyinput") {
-                echo "<p id='warning_input'>Fill in all fields!</p>";
+                echo "<p id='warning_input'>Fülle bitte alle Felder aus!</p>";
             } else if ($_GET['error'] == "invalidtoken") {
-                echo "<p id='error_pwd'>Invalid token!</p>";
+                echo "<p id='error_pwd'>Bitte gib einen gültigen Token ein!</p>";
             } else if ($_GET['error'] == "SELECTFAILED") {
-                echo "<p id='error_pwd'>Something went wrong, try again</p>";
+                echo "<p id='error_pwd'>Irgendetwas ist schiefgelauen, probiere nochmal.</p>";
                 echo "<br><br>";
                 echo "Error Code: 1";
             } else if ($_GET['error'] == "INPUTFAILED") {
-                echo "<p id='error_pwd'>Something went wrong, try again</p>";
+                echo "<p id='error_pwd'>Irgendetwas ist schiefgelauen, probiere nochmal.</p>";
                 echo "<br><br>";
                 echo "Error Code: 2";
             } else if ($_GET['error'] == "none") {
-                echo "<p id='succes'>Succesfully club entered!</p>";
+                echo "<p id='succes'>Du bist dem Club erfolgreich beigetreten!</p>";
             }
         }
         ?>
     </div>
     <div class="center">
         <section class="input__form">
-            <h1>Club Enter</h1>
+            <h1>Club beitreten</h1>
             <form action="../inc/club_enter.inc.php" method="POST">
                 <div class="text__field">
                     <input type="text" name="token" required>
                     <span></span>
-                    <label>Club-Token</label>
+                    <label>Club Token</label>
                 </div>
-                <input type="submit" class="btn" name="submit" value="Club Enter">
+                <input type="submit" class="btn" name="submit" value="Club beitreten">
             </form>
             <form action="../index.php">
                 <input type="submit" class="btn" name="submit" value="Zurück">
