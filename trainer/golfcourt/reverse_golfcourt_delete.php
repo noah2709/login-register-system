@@ -15,9 +15,6 @@ if (isset($_POST["court_id"])) {
     $club = getClub($conn, $userId);
     $club_id = $club['club_id'];
 
-    if (!canDeleteReserve($conn, $court_id, $club_id)) {
-    }
-
 
     $query = "DELETE FROM reserve WHERE court_id = ?";
     $statement = $conn->prepare($query);
