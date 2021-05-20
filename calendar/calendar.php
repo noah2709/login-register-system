@@ -13,6 +13,7 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
         $(document).ready(function() {
             var calendar = $('#calendar').fullCalendar({
@@ -30,7 +31,28 @@ session_start();
                     var start = (event.start == null ? "Unbekannt" : $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss"));
                     var end = (event.end == null ? "Unbekannt" : $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss"));
                     var title = event.title;
-                    prompt("Start: " + start + " | Ende: " + end + " | Titel: " + title);
+
+                    title = title.replace("Wettkampf | ", "");
+                    title = title.replace("Reserve | ", "");
+
+                    const formData = new FormData();
+                    fetch('', {
+                        method: "POST",
+                        body: formData
+                    }).then(function(response) {
+                        return response.text();
+                    }).then(function(text) {
+                        console.log(text);
+                    }).catch(function(error) {
+                        concole.error(error);
+                    }).then(function(onclick) {
+                        Swal.fire({
+                            position: 'center',
+                            titleText: 'Informationen:',
+                            html: "Start: " + start + "<br> Ende: " + end + "<br> Titel: " + title,
+                            showConfirmButton: true,
+                        })
+                    })
                 },
             });
         });
