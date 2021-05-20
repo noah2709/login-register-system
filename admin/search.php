@@ -1,14 +1,5 @@
 <?php
-session_start();
-include_once '../inc/db.inc.php';
-include_once '../inc/functions.inc.php';
-if (isset($_SESSION)) {
-    if (!isAdmin($conn, $_SESSION['userid'])) {
-        header("location: ../error/error_403_page.html");
-    }
-} else {
-    header("location: ../error/error_403_page.html");
-}
+require_once '../inc/db.inc.php';
 ?>
 
 <!DOCTYPE html>
