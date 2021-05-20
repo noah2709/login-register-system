@@ -248,6 +248,38 @@ function hasClub($conn, $userId)
     return false;
 }
 
+function getRoleName($conn, $userId)
+{
+    $query = $conn->query("SELECT role_id FROM user WHERE user_id = '$userId'");
+
+    $role_id = -1;
+
+    while ($row = $query->fetch_assoc()) {
+        $role_id = $row['role_id'];
+    }
+
+    $roleQuery = $conn->query("SELECT role_name FROM role WHERE role_id = '$role_id'");
+
+    $role_name = "User";
+
+    while ($row = $roleQuery->fetch_assoc()) {
+        $role_name = $row['role_name'];
+    }
+    return $role_name;
+}
+
+function isAdmin($conn, $userId)
+{
+    $role_name = getRoleName($conn, $userId);
+    return strcasecmp($role_name, "admin") == 0;
+}
+
+function isTrainer($conn, $userId)
+{
+    $role_name = getRoleName($conn, $userId);
+    return strcasecmp($role_name, "trainer") == 0;
+}
+
 function getClub($conn, $userId)
 {
     $query = $conn->query("SELECT club_id FROM user WHERE user_id = '$userId'");
