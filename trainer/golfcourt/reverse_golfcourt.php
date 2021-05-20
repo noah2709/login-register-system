@@ -1,5 +1,15 @@
 <?php
 session_start();
+require_once '../../inc/functions.inc.php';
+require_once '../../inc/db.inc.php';
+
+if (isset($_SESSION)) {
+    if (!isTrainer($conn, $_SESSION['userid']) and !isAdmin($conn, $_SESSION['userid'])) {
+        header("location: ../../error/error_403_page.html");
+    }
+} else {
+    header("location: ../../error/error_403_page.html");
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +23,7 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
         var t = false;
 
@@ -54,8 +65,26 @@ session_start();
                                 end: end,
                             },
                             success: function() {
-                                alert("Erfolgreich reserviert.");
                                 calendar.fullCalendar('refetchEvents');
+                                const formData = new FormData();
+                                fetch('reverse_golfcourt_insert.php', {
+                                    method: "POST",
+                                    body: formData
+                                }).then(function(response) {
+                                    return response.text();
+                                }).then(function(text) {
+                                    console.log(text);
+                                }).catch(function(error) {
+                                    concole.error(error);
+                                }).then(function(onclick) {
+                                    Swal.fire({
+                                        position: 'center',
+                                        icon: 'success',
+                                        title: 'Golfplatz erfolgreich reserviert!',
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                    })
+                                })
                             }
                         })
                     }
@@ -72,7 +101,25 @@ session_start();
                                 court_id: court_id
                             },
                             error: function(jqXHR, exception) {
-                                alert("Du hast keine Berechtigung, diese Reservierung zu löschen, da sie nicht von dir erstellt wurde.");
+                                const formData = new FormData();
+                                fetch('', {
+                                    method: "POST",
+                                    body: formData
+                                }).then(function(response) {
+                                    return response.text();
+                                }).then(function(text) {
+                                    console.log(text);
+                                }).catch(function(error) {
+                                    concole.error(error);
+                                }).then(function(onclick) {
+                                    Swal.fire({
+                                        position: 'center',
+                                        icon: 'error',
+                                        title: 'Du kannst diese Reservierung nicht löschen!',
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                    })
+                                })
                             },
                             success: function() {
                                 $.ajax({
@@ -83,7 +130,25 @@ session_start();
                                     },
                                     success: function() {
                                         calendar.fullCalendar('refetchEvents');
-                                        alert("Reservierung entfernt");
+                                        const formData = new FormData();
+                                        fetch('reverse_golfcourt_delete.php', {
+                                            method: "POST",
+                                            body: formData
+                                        }).then(function(response) {
+                                            return response.text();
+                                        }).then(function(text) {
+                                            console.log(text);
+                                        }).catch(function(error) {
+                                            concole.error(error);
+                                        }).then(function(onclick) {
+                                            Swal.fire({
+                                                position: 'center',
+                                                icon: 'success',
+                                                title: 'Reservierung erfolgreich gelöscht!',
+                                                showConfirmButton: false,
+                                                timer: 1500,
+                                            })
+                                        })
                                     }
                                 })
                             }
