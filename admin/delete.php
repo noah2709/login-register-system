@@ -1,10 +1,22 @@
 <?php
-require_once '../inc/db.inc.php';
+session_start();
+include_once '../inc/db.inc.php';
+include_once '../inc/functions.inc.php';
 ?>
 
 <?php
 
+
+if (isset($_SESSION)) {
+    if (!isAdmin($conn, $_SESSION['userid'])) {
+        header("location: ../error/error_403_page.html");
+    }
+} else {
+    header("location: ../error/error_403_page.html");
+}
+
 if (isset($_POST['submit'])) {
+
     $username = $_POST['username'];
     $email = $_POST['email'];
     $id = $_POST['id'];
@@ -20,6 +32,7 @@ if (isset($_POST['submit'])) {
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="de">
 
@@ -31,7 +44,9 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 
 <body>
@@ -62,33 +77,19 @@ if (isset($_POST['submit'])) {
                         <td><?php echo $row['lastname'] ?></td>
                         <td><?php echo $row['username'] ?></td>
                         <td><?php echo $row['email'] ?></td>
+                        <td><i class="fas fa-trash" id="delete_trash"></i></td>
                     </tr>
                 <?php
                 }
                 ?>
             </tbody>
         </table>
-        <div class="h1">
-            <h1>Benutzer löschen</h1>
-        </div>
-        <div class="deletebox">
-            <form action="" method="POST" class="deleteform">
-                <input type="text" name="username" placeholder="Benutzername">
-                <i class="fas fa-angle-double-down" id="doublearrowdown"></i>
-                <input type="email" name="email" placeholder="E-Mail">
-                <i class="fas fa-angle-double-down" id="doublearrowdown"></i>
-                <input type="number" name="id" placeholder="ID">
-                <i class="fas fa-angle-double-down" id="doublearrowdown"></i>
-                <input type="submit" name="submit" class="deletesubmit" id="deletesubmit" value="Benutzer löschen">
-            </form>
-            <form action="../index.php" class="backform">
-                <input type="submit" name="submit" value="Zurück">
-            </form>
-        </div>
 
     </div>
 
 
 </body>
+
+<script src="../javascript/jquery.js"></script>
 
 </html>
