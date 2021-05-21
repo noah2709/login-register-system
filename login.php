@@ -9,12 +9,6 @@
 </head>
 
 <body>
-    <div class="social_flyout">
-        <ul class="some_list">
-            <li><a href="index.php">Zurück</a></li>
-            <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github">Github</i></a></li>
-        </ul>
-    </div>
     <div class="errors">
         <?php
         if (isset($_GET['error'])) {

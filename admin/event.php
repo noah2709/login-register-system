@@ -35,6 +35,7 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
+
     <div class="errors">
         <?php
         if (isset($_GET['error'])) {

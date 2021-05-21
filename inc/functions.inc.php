@@ -196,7 +196,13 @@ function createClub($conn, $clubName, $postalCode, $userId)
 
 
 
-    $highestClubId = getClubIdFromName($conn, $clubName);
+    $highestClubId = -1;
+    $query = $conn->query("SELECT club_id FROM club");
+    while ($row = $query->fetch_assoc()) {
+        if ($row['club_id'] > $highestClubId) {
+            $highestClubId = $row['club_id'];
+        }
+    }
 
     $updateStmt = $conn->prepare("UPDATE user SET club_id = '$highestClubId' WHERE user_id = '$userId'");
     $updateStmt->execute();
@@ -231,18 +237,34 @@ function hasClub($conn, $userId)
 {
     $query = $conn->query("SELECT club_id FROM user WHERE user_id = '$userId'");
 
-    return $query->fetch_assoc()['club_id'] !== NULL;
+    while ($row = $query->fetch_assoc()) {
+        if ($row['club_id'] == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 function getRoleName($conn, $userId)
 {
     $query = $conn->query("SELECT role_id FROM user WHERE user_id = '$userId'");
 
-    $role_id = $query->fetch_assoc()['role_id'];
+    $role_id = -1;
+
+    while ($row = $query->fetch_assoc()) {
+        $role_id = $row['role_id'];
+    }
 
     $roleQuery = $conn->query("SELECT role_name FROM role WHERE role_id = '$role_id'");
 
-    $role_name = $roleQuery->fetch_assoc()['role_name'];
+    $role_name = "User";
+
+    while ($row = $roleQuery->fetch_assoc()) {
+        $role_name = $row['role_name'];
+    }
     return $role_name;
 }
 
@@ -262,7 +284,13 @@ function getClub($conn, $userId)
 {
     $query = $conn->query("SELECT club_id FROM user WHERE user_id = '$userId'");
 
-    $club_id = $query->fetch_assoc()['club_id'];
+    $club_id = null;
+
+    while ($row = $query->fetch_assoc()) {
+        if ($row['club_id'] != NULL) {
+            $club_id = $row['club_id'];
+        }
+    }
 
     if ($club_id == NULL) {
         return NULL;
@@ -293,7 +321,10 @@ function getTownIdFromName($conn, $townName)
     if ($query->num_rows <= 0) {
         return null;
     }
-    $id = $query->fetch_assoc()['postalcode'];
+    $id = -1;
+    while ($row = $query->fetch_assoc()) {
+        $id = $row['postalcode'];
+    }
     return $id;
 }
 
@@ -302,7 +333,11 @@ function getClubIdFromName($conn, $clubName)
 
     $query = $conn->query("SELECT club_id FROM club WHERE name = '$clubName'");
 
-    $id = $query->fetch_assoc()['club_id'];
+    $id = -1;
+
+    while ($row = $query->fetch_assoc()) {
+        $id = $row['club_id'];
+    }
 
     return $id;
 }
@@ -312,7 +347,11 @@ function getCourtFromName($conn, $courtName)
 
     $query = $conn->query("SELECT court_id FROM golfcourt WHERE name = '$courtName'");
 
-    $id = $query->fetch_assoc()['court_id'];
+    $id = -1;
+
+    while ($row = $query->fetch_assoc()) {
+        $id = $row['court_id'];
+    }
 
     return $id;
 }
@@ -321,7 +360,11 @@ function canDeleteReserve($conn, $court_id, $club_id)
 {
     $query = $conn->query("SELECT club_id FROM reserve WHERE court_id = '$court_id'");
 
-    $clubIdFromDatabase = $query->fetch_assoc()['club_id'];
+    $clubIdFromDatabase = -1;
+
+    while ($row = $query->fetch_assoc()) {
+        $clubIdFromDatabase = $row['club_id'];
+    }
 
     return $clubIdFromDatabase == $club_id;
 }
@@ -331,7 +374,11 @@ function getCourtFromId($conn, $courtId)
 
     $query = $conn->query("SELECT name FROM golfcourt WHERE court_id = '$courtId'");
 
-    $courtName = $query->fetch_assoc()['name'];
+    $courtName = -1;
+
+    while ($row = $query->fetch_assoc()) {
+        $courtName = $row['name'];
+    }
 
     return $courtName;
 }

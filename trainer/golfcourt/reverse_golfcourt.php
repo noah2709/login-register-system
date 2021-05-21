@@ -18,7 +18,6 @@ if (isset($_SESSION)) {
 <head>
     <title>Golfplatz reservieren</title>
     <link rel="stylesheet" href="../../fullcalender.css" />
-    <link rel="stylesheet" href="../../style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -162,12 +161,9 @@ if (isset($_SESSION)) {
 </head>
 
 <body>
-    <div class="social_flyout">
-        <ul class="some_list">
-            <li><a href="../../index.php">Zurück</a></li>
-            <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github">Github</i></a></li>
-        </ul>
-    </div>
+    <form action="../../index.php" class="backform">
+        <input type="submit" name="submit" value="Zurück">
+    </form>
     <br />
     <h2 align="center">Golfplatz reservieren</h2>
     <br />

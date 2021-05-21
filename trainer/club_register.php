@@ -24,12 +24,6 @@ if (isset($_SESSION)) {
 </head>
 
 <body>
-    <div class="social_flyout">
-        <ul class="some_list">
-            <li><a href="../index.php">Zurück</a></li>
-            <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github">Github</i></a></li>
-        </ul>
-    </div>
     <div class="errors">
         <?php
         if (isset($_GET['error'])) {
@@ -53,7 +47,7 @@ if (isset($_SESSION)) {
     </div>
     <div class="center">
         <section class="input__form">
-            <h1>Club registrieren</h1>
+            <h1>Club Sign Up</h1>
             <form action="../inc/club_signup.inc.php" method="POST">
                 <div class="text__field">
                     <input type="text" name="name" required>
@@ -62,7 +56,7 @@ if (isset($_SESSION)) {
                 </div>
                 <div class="text__field">
                     <?php
-                    echo '<select name="postalcode" id="club_register_dropdown">';
+                    echo '<select name="postalcode" id="dropDown">';
                     $query = $conn->query("SELECT name FROM town");
                     while ($row = $query->fetch_assoc()) {
                         echo "<option name='postalcode' value='" . $row['name'] . "'>" . $row['name'] . "</option>";
@@ -71,7 +65,7 @@ if (isset($_SESSION)) {
                     echo "</select> <br>";
                     ?>
                 </div>
-                <input type="submit" class="btn" name="submit" value="Registrieren">
+                <input type="submit" class="btn" name="submit" value="Club registrieren">
             </form>
         </section>
     </div>
