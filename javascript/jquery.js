@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
     $('.fas').click(function () {
-        console.log("a");
         var $row = jQuery(this).closest('tr');
         var $columns = $row.find('td');
 

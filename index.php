@@ -27,11 +27,15 @@ include_once 'inc/functions.inc.php';
         </div>
         <h1>Hauptseite</h1>
     </header>
+    <div class="social_flyout">
+        <ul class="some_list">
+            <li><a href="#"><i class="fab fa-github">Github</i></a></li>
+        </ul>
+    </div>
     <?php
 
     if (isset($_SESSION['role'])) {
         if (strcasecmp($_SESSION['role'], "admin") == 0) {
-
             echo "<div class='navigation-menu'>";
             echo "<nav>";
             echo "<li><a href='admin/delete.php'>Benutzer löschen</a></li>";

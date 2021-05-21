@@ -10,7 +10,7 @@ include_once '../inc/functions.inc.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <script src="https://kit.fontawesome.com/2deba413ff.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?famsily=Montserrat:wght@200&display=swap" rel="stylesheet">
     <title>Ihre nächsten Spiele</title>
@@ -26,8 +26,14 @@ include_once '../inc/functions.inc.php';
     echo "</div>";
     ?>
 
+    <div class="social_flyout">
+        <ul class="some_list">
+            <li><a href="../index.php">Zurück</a></li>
+            <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github">Github</i></a></li>
+        </ul>
+    </div>
     <div class="wrapper">
-        <table class="content">
+        <table class="club_events_content">
             <thead>
                 <tr>
                     <th>Start</th>
@@ -89,9 +95,5 @@ include_once '../inc/functions.inc.php';
                 ?>
             </tbody>
         </table>
-
-        <form action="../index.php" class="event_backform">
-            <input type="submit" name="submit" value="Zurück">
-        </form>
     </div>
 </body>
