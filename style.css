@@ -306,6 +306,22 @@ input.btn:hover {
   color:rgb(202, 176, 176);
 }
 
+.deleteform input::-webkit-input-placeholder {
+  color: rgb(202, 176, 176);
+}
+
+.deleteform input::-moz-placeholder {
+  color: rgb(202, 176, 176);
+}
+
+.deleteform input:-ms-input-placeholder {
+  color: rgb(202, 176, 176);
+}
+
+.deleteform input::-ms-input-placeholder {
+  color: rgb(202, 176, 176);
+}
+
 .deleteform input::placeholder {
   color: rgb(202, 176, 176);
 }
@@ -381,7 +397,7 @@ input.btn:hover {
 
 .index_header h1 {
   text-align: center;
-  margin: 1px auto;
+  margin: auto;
   color: rgba(255, 255, 255, 0.452);
 }
 
@@ -410,6 +426,14 @@ input.btn:hover {
 .menu-icon.active i {
   font-size: 30px;
   background: rgba(255, 255, 255, 0.212);
+}
+
+#social_flyout_back {
+  font-size: 25px;
+  text-decoration: none;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  letter-spacing: 0.12px;
+  font-variant: small-caps;
 }
 
 .menu-icon i {
@@ -545,6 +569,7 @@ p{
   transform: translate(-50%, -50%);
   border: 3px solid white;
   border-radius: 35px;
+  min-width: 380px;
 }
 
 .navigation {
@@ -607,11 +632,7 @@ p{
   list-style-type: none;
   margin: 0;
   padding: 0;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   text-align: center;
   background-color: #0a132d91;
@@ -625,10 +646,15 @@ p{
 .social_flyout .some_list li a {
   display: block;
   color: #fff;
-  font-style: 24px;
   border: none;
-  padding: 10px 15px;
+  font-size: 30px;
+  padding: 10px 5px;
 }
+
+.social_flyout .some_list li a:hover {
+  background: rgba(255, 255, 255, 0.363);
+}
+
 #club_register_dropdown {
   
     position: absolute;
