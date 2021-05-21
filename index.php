@@ -20,16 +20,18 @@ include_once 'inc/functions.inc.php';
 
 <body>
     <header class="index_header">
+        <h1>Hauptseite</h1>
         <div class="inner-width">
             <div class="menu-icon">
                 <i class="fas fa-align-right"></i>
             </div>
         </div>
-        <h1>Hauptseite</h1>
     </header>
     <div class="social_flyout">
         <ul class="some_list">
-            <li><a href="#"><i class="fab fa-github">Github</i></a></li>
+            <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github"></i></a></li>
+            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
         </ul>
     </div>
     <?php
@@ -40,7 +42,7 @@ include_once 'inc/functions.inc.php';
             echo "<nav>";
             echo "<li><a href='admin/delete.php'>Benutzer löschen</a></li>";
             echo "<li><a href='admin/update.php'>Benutzer bearbeiten</a></li>";
-            echo "<li><a href='admin/serach.php'>Benutzer suchen</a></li>";
+            echo "<li><a href='admin/search.php'>Benutzer suchen</a></li>";
             echo "<li><a href='calendar/calendar.php'>Terminkalender</a></li>";
             echo "<li><a href='inc/logout.inc.php'>Ausloggen</a></li>";
             echo "</nav>";

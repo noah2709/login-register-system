@@ -112,9 +112,14 @@ if (isset($_POST['submit'])) {
 
             </form>
 
-            <form action="../index.php" class="event_backform">
-                <input type="submit" name="submit" value="Zurück">
-            </form>
+            <div class="social_flyout">
+                <ul class="some_list">
+                    <li><a href="../index.php"><i class="fas fa-backward"></i></a></li>
+                    <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                </ul>
+            </div>
         </div>
 
     </div>
