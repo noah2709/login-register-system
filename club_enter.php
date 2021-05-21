@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
     <title>Club Enter</title>
 </head>
 
 <body>
+    <div class="social_flyout">
+        <ul class="some_list">
+            <li><a href="index.php">Zurück</a></li>
+            <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github">Github</i></a></li>
+        </ul>
+    </div>
     <div class="errors">
         <?php
         if (isset($_GET['error'])) {
@@ -40,9 +46,6 @@
                     <label>Club Token</label>
                 </div>
                 <input type="submit" class="btn" name="submit" value="Club beitreten">
-            </form>
-            <form action="../index.php">
-                <input type="submit" class="btn" name="submit" value="Zurück">
             </form>
         </section>
     </div>

@@ -342,7 +342,6 @@ input.btn:hover {
 
 .wrapper {
   overflow-y: hidden;
-  margin-left:auto;
   margin-right:auto;
   min-width:960px;
 }
@@ -584,8 +583,6 @@ p{
   height: 100%;
 }
 
-
-
 #r1:checked ~ .s1 {
   margin-left: 0;
 }
@@ -596,4 +593,51 @@ p{
 
 #r3:checked ~ .s3 {
   margin-left: -40%;
+}
+
+.social_flyout {    
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.social_flyout .some_list {
+  
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  text-align: center;
+  background-color: #0a132d91;
+  border-radius: 5px;
+}
+
+.social_flyout .some_list li {
+  position: relative;
+}
+
+.social_flyout .some_list li a {
+  display: block;
+  color: #fff;
+  font-style: 24px;
+  border: none;
+  padding: 10px 15px;
+}
+#club_register_dropdown {
+  
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+    transition: .5s;
+    cursor: pointer;
+    border-radius: 7.44px;
 }

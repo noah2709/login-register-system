@@ -8,6 +8,7 @@ session_start();
 <head>
     <title>Alle Termine</title>
     <link rel="stylesheet" href="../fullcalender.css" />
+    <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -31,9 +32,6 @@ session_start();
                     var start = (event.start == null ? "Unbekannt" : $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss"));
                     var end = (event.end == null ? "Unbekannt" : $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss"));
                     var title = event.title;
-
-                    title = title.replace("Wettkampf | ", "");
-                    title = title.replace("Reserve | ", "");
 
                     const formData = new FormData();
                     fetch('', {
@@ -60,9 +58,12 @@ session_start();
 </head>
 
 <body>
-    <form action="../index.php" class="backform">
-        <input type="submit" name="submit" value="Zurück">
-    </form>
+    <div class="social_flyout">
+        <ul class="some_list">
+            <li><a href="../index.php">Zurück</a></li>
+            <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github">Github</i></a></li>
+        </ul>
+    </div>
     <br />
     <h2 align="center">Alle Termine</h2>
     <br />
