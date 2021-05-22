@@ -27,13 +27,15 @@ if (isset($_SESSION)) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
-        var t = false;
         var events = [];
 
         function getEvents(date) {
             var allEvents = [];
             allEvents = $('#calendar').fullCalendar('clientEvents');
-            return allEvents;
+            var event = $.grep(allEvents, function(v) {
+                return +v.start === +date;
+            });
+            return event;
         }
         $(document).ready(function() {
             var calendar = $('#calendar').fullCalendar({
@@ -53,6 +55,8 @@ if (isset($_SESSION)) {
                 select: function(start, end, allDay) {
                     clubIds = [];
                     counter = 0;
+
+
                     events.forEach((element) => {
                         clubIds[counter] = element['club_id'];
                         counter++;
@@ -69,9 +73,7 @@ if (isset($_SESSION)) {
                             fetch('', {
                                 method: "POST",
                                 body: formData
-                            }).then(function(response) {
-                                return response.text();
-                            }).then(function(text) {
+                            }).then(function(response) {}).then(function(text) {
                                 console.log(text);
                             }).catch(function(error) {
                                 concole.error(error);
@@ -84,87 +86,94 @@ if (isset($_SESSION)) {
                                 })
                             })
                         },
-                        success: function() {}
-                    })
+                        success: function() {
 
-                    $start = start;
-                    $end = start;
-                    var inputOptionsPromise = new Promise(function(resolve) {
-                        $.ajax({
-                            url: "reverse_golfcourt_load_golfcourt.php",
-                            success: function(dataArray) {
-                                const parsed = JSON.parse(dataArray);
+                            $start = start;
+                            $end = start;
+                            var inputOptionsPromise = new Promise(function(resolve) {
+                                $.ajax({
+                                    url: "reverse_golfcourt_load_golfcourt.php",
+                                    success: function(dataArray) {
+                                        const parsed = JSON.parse(dataArray);
 
-                                names = []
+                                        names = []
 
-                                if (events.length >= 1) {
-                                    for (i = 0; i < parsed.length; i++) {
-                                        events.forEach((element) => {
-                                            if (element['court'] === parsed[i]["name"]) {
-                                                return "continue";
+                                        if (events.length >= 1) {
+                                            for (i = 0; i < parsed.length; i++) {
+                                                events.forEach((element) => {
+                                                    if (element['court'] === parsed[i]["name"]) {
+                                                        return "continue";
+                                                    }
+                                                    names[i] = parsed[i]["name"];
+                                                });
                                             }
-                                            names[i] = parsed[i]["name"];
-                                        });
-                                    }
-                                } else {
-                                    for (i = 0; i < parsed.length; i++) {
-                                        names[i] = parsed[i]["name"];
-                                    }
-                                }
+                                        } else {
+                                            for (i = 0; i < parsed.length; i++) {
+                                                names[i] = parsed[i]["name"];
+                                            }
+                                        }
 
-                                setTimeout(function() {
-                                    resolve({
-                                        names: names
-                                    })
-                                })
+                                        setTimeout(function() {
+                                            resolve({
+                                                names: names
+                                            })
+                                        })
 
 
-                                Swal.fire({
-                                    title: "Wähle einen Golfplatz aus.",
-                                    input: "select",
-                                    inputOptions: inputOptionsPromise,
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
+                                        Swal.fire({
+                                            title: "Wähle einen Golfplatz aus.",
+                                            showDenyButton: true,
+                                            denyButtonText: "Abbrechen",
+                                            input: "select",
+                                            inputOptions: inputOptionsPromise,
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
 
-                                        const finalName = names[result.value];
-                                        var start = $.fullCalendar.formatDate($start, "Y-MM-DD");
-                                        var end = $.fullCalendar.formatDate($end, "Y-MM-DD");
-                                        $.ajax({
-                                            url: "reverse_golfcourt_insert.php",
-                                            type: "POST",
-                                            data: {
-                                                title: finalName,
-                                                start: start,
-                                                end: end,
-                                            },
-                                            success: function() {
-                                                calendar.fullCalendar('refetchEvents');
-                                                const formData = new FormData();
-                                                fetch('reverse_golfcourt_insert.php', {
-                                                    method: "POST",
-                                                    body: formData
-                                                }).then(function(response) {
-                                                    return response.text();
-                                                }).then(function(text) {
-                                                    console.log(text);
-                                                }).catch(function(error) {
-                                                    concole.error(error);
-                                                }).then(function(onclick) {
-                                                    Swal.fire({
-                                                        position: 'center',
-                                                        icon: 'success',
-                                                        title: 'Golfplatz erfolgreich reserviert!',
-                                                        showConfirmButton: false,
-                                                        timer: 1500,
-                                                    })
+                                                const finalName = names[result.value];
+                                                var start = $.fullCalendar.formatDate($start, "Y-MM-DD");
+                                                var end = $.fullCalendar.formatDate($end, "Y-MM-DD");
+                                                $.ajax({
+                                                    url: "reverse_golfcourt_insert.php",
+                                                    type: "POST",
+                                                    data: {
+                                                        title: finalName,
+                                                        start: start,
+                                                        end: end,
+                                                    },
+                                                    success: function() {
+                                                        calendar.fullCalendar('refetchEvents');
+                                                        const formData = new FormData();
+                                                        fetch('reverse_golfcourt_insert.php', {
+                                                            method: "POST",
+                                                            body: formData
+                                                        }).then(function(response) {
+                                                            return response.text();
+                                                        }).then(function(text) {
+                                                            console.log(text);
+                                                        }).catch(function(error) {
+                                                            concole.error(error);
+                                                        }).then(function(onclick) {
+                                                            Swal.fire({
+                                                                position: 'center',
+                                                                icon: 'success',
+                                                                title: 'Golfplatz erfolgreich reserviert!',
+                                                                showConfirmButton: false,
+                                                                timer: 1500,
+                                                            })
+                                                        })
+                                                    }
                                                 })
                                             }
                                         })
                                     }
                                 })
-                            }
-                        })
-                    });
+                            });
+
+
+
+
+                        }
+                    })
 
 
                 },
@@ -258,10 +267,21 @@ if (isset($_SESSION)) {
         </ul>
     </div>
     <br />
-    <h2 align="center">Golfplatz reservieren</h2>
     <br />
     <div class="container">
         <div id="calendar"></div>
+    </div>
+    <div class='centered_pictures'>
+        <div class='slidershow middle'>
+            <div class='slides'>
+                <input type='radio' name='r' id='r1' checked hidden>
+                <input type='radio' name='r' id='r2' hidden>
+                <input type='radio' name='r' id='r3' hidden>
+                <div class='slide s1'>
+                    <img style='opacity: 0.76;' src='../../img/golf_4.jpg'> alt="picture 1 not found">
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
