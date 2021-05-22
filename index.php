@@ -20,7 +20,6 @@ include_once 'inc/functions.inc.php';
 
 <body>
     <header class="index_header">
-        <h1>Hauptseite</h1>
         <div class="inner-width">
             <div class="menu-icon">
                 <i class="fas fa-align-right"></i>
