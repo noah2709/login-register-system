@@ -30,6 +30,7 @@ session_start();
                 selectable: true,
                 selectHelper: true,
                 eventClick: function(event) {
+                    console.log(event);
                     var start = (event.start == null ? "Unbekannt" : $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss"));
                     var end = (event.end == null ? "Unbekannt" : $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss"));
                     var title = event.title;
@@ -45,12 +46,21 @@ session_start();
                     }).catch(function(error) {
                         concole.error(error);
                     }).then(function(onclick) {
-                        Swal.fire({
-                            position: 'center',
-                            titleText: 'Informationen:',
-                            html: "Start: " + start + "<br> Ende: " + end + "<br> Titel: " + title,
-                            showConfirmButton: true,
-                        })
+                        if (title.startsWith("Reserve")) {
+                            Swal.fire({
+                                position: 'center',
+                                titleText: 'Informationen:',
+                                html: "Titel: " + title,
+                                showConfirmButton: true,
+                            })
+                        } else {
+                            Swal.fire({
+                                position: 'center',
+                                titleText: 'Informationen:',
+                                html: "Start: " + start + "<br> Ende: " + end + "<br> Titel: " + title,
+                                showConfirmButton: true,
+                            })
+                        }
                     })
                 },
             });
@@ -68,10 +78,21 @@ session_start();
         </ul>
     </div>
     <br />
-    <h2 align="center">Alle Termine</h2>
     <br />
     <div class="container">
         <div id="calendar"></div>
+    </div>
+    <div class='centered_pictures'>
+        <div class='slidershow middle'>
+            <div class='slides'>
+                <input type='radio' name='r' id='r1' checked hidden>
+                <input type='radio' name='r' id='r2' hidden>
+                <input type='radio' name='r' id='r3' hidden>
+                <div class='slide s1'>
+                    <img style='opacity: 0.76;' src='../img/golf_4.jpg'> alt="picture 1 not found">
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
