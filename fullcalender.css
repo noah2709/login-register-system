@@ -43,7 +43,7 @@ body .fc { /* extra precedence to overcome jqui */
 }
 
 .fc-unthemed td.fc-today {
-	background: #fcf8e3;
+	background: #fcf8e352;
 }
 
 .fc-highlight { /* when user is selecting cells */
@@ -382,8 +382,7 @@ hr.fc-divider {
 
 .fc th,
 .fc td {
-	border-style: solid;
-	border-width: 1px;
+	border: 2px solid white;
 	padding: 0;
 	vertical-align: top;
 }
@@ -930,12 +929,12 @@ a.fc-more:hover {
 /* week and day number styling */
 
 .fc-day-top.fc-other-month {
-	opacity: 0.3;
+	opacity: 0.4;
 }
 
 .fc-basic-view .fc-week-number,
 .fc-basic-view .fc-day-number {
-	padding: 2px;
+	padding: 3.5px;
 }
 
 .fc-basic-view th.fc-week-number,
