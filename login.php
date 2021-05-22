@@ -5,14 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/2deba413ff.js" crossorigin="anonymous"></script>
     <title>Login</title>
 </head>
 
 <body>
     <div class="social_flyout">
         <ul class="some_list">
-            <li><a href="index.php">Zurück</a></li>
-            <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github">Github</i></a></li>
+            <li><a href="index.php"><i class="fas fa-backward"></i></a></li>
+            <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github"></i></a></li>
+            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
         </ul>
     </div>
     <div class="errors">
@@ -38,9 +41,10 @@
                     <label>Benutzername/E-Mail</label>
                 </div>
                 <div class="text__field">
-                    <input type="password" name="pwd" required>
+                    <input type="password" name="pwd" class="pwd" id="pwd" required>
                     <span></span>
-                    <label>Passwort</label>
+                    <label>Passwort </label>
+                    <i class="far fa-eye" id="pwd_eye"></i>
                 </div>
                 <input type="submit" class="btn" name="submit" value="Login">
                 <div class="signup__link">
@@ -51,5 +55,7 @@
         </section>
     </div>
 </body>
+
+<script src="./javascript/registration.js"></script>
 
 </html>

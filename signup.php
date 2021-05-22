@@ -5,16 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/2deba413ff.js" crossorigin="anonymous"></script>
     <title>Registrieren</title>
 </head>
 
 <body>
-    <div class="social_flyout">
-        <ul class="some_list">
-            <li><a href="index.php">Zurück</a></li>
-            <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github"></i></a></li>
-        </ul>
-    </div>
     <div class="errors">
         <?php
         if (isset($_GET['error'])) {
@@ -44,6 +39,14 @@
         }
         ?>
     </div>
+    <div class="social_flyout">
+        <ul class="some_list">
+            <li><a href="index.php"><i class="fas fa-backward"></i></a></li>
+            <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github"></i></a></li>
+            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+        </ul>
+    </div>
     <div class="center">
         <section class="input__form">
             <h1>Registrieren</h1>
@@ -52,6 +55,7 @@
                     <input type="text" name="firstname" required>
                     <span></span>
                     <label>Vorname</label>
+                    <label hidden><i class="fas fa-times"></i></label>
                 </div>
                 <div class="text__field">
                     <input type="text" name="lastname" required>
@@ -69,16 +73,18 @@
                     <label>E-Mail</label>
                 </div>
                 <div class="text__field">
-                    <input type="password" class="pwd" name="pwd" required>
+                    <input type="password" class="pwd" id="pwd" name="pwd" required>
                     <span></span>
-                    <label>Passwort</label>
+                    <label>Passwort <i style="color: red;" id="pwd_validity">✖</i></label>
+                    <i class="far fa-eye" id="pwd_eye"></i>
                 </div>
                 <div class="text__field">
-                    <input type="password" class="pwd" name="pwdRepeat" required>
+                    <input type="password" class="pwd" id="pwdRepeat" name="pwdRepeat" required>
                     <span></span>
-                    <label>Wiederhole Passwort</label>
+                    <label>Wiederhole Passwort <i style="color: red;" id="pwd_validity_repeat">✖</i></label>
+                    <i class="far fa-eye" id="pwd_eye_repeat"></i>
                 </div>
-                <input type="submit" class="btn" name="submit" value="Registrieren">
+                <input type="submit" class="btn" id="signup_submit" name="submit" value="Registrieren">
                 <div class="signup__link">
                     Bereits einen Account? <a href="./login.php">Einloggen</a>
                 </div>
@@ -86,5 +92,7 @@
         </section>
     </div>
 </body>
+
+<script src="./javascript/registration.js"></script>
 
 </html>
