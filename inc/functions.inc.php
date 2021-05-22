@@ -151,6 +151,8 @@ function generateToken($length)
     return $randomString;
 }
 
+
+
 function createUser($conn, $firstname, $lastname, $username, $password, $email)
 // 
 // Role_id 1 = User
@@ -231,12 +233,16 @@ function hasClub($conn, $userId)
 {
     $query = $conn->query("SELECT club_id FROM user WHERE user_id = '$userId'");
 
+    if ($query->num_rows <= 0) return null;
+
     return $query->fetch_assoc()['club_id'] !== NULL;
 }
 
 function getRoleName($conn, $userId)
 {
     $query = $conn->query("SELECT role_id FROM user WHERE user_id = '$userId'");
+
+    if ($query->num_rows <= 0) return null;
 
     $role_id = $query->fetch_assoc()['role_id'];
 
@@ -249,18 +255,22 @@ function getRoleName($conn, $userId)
 function isAdmin($conn, $userId)
 {
     $role_name = getRoleName($conn, $userId);
+    if ($role_name == null) return null;
     return strcasecmp($role_name, "admin") == 0;
 }
 
 function isTrainer($conn, $userId)
 {
     $role_name = getRoleName($conn, $userId);
+    if ($role_name == null) return null;
     return strcasecmp($role_name, "trainer") == 0;
 }
 
 function getClub($conn, $userId)
 {
     $query = $conn->query("SELECT club_id FROM user WHERE user_id = '$userId'");
+
+    if ($query->num_rows <= 0) return null;
 
     $club_id = $query->fetch_assoc()['club_id'];
 
@@ -317,9 +327,11 @@ function getCourtFromName($conn, $courtName)
     return $id;
 }
 
-function canDeleteReserve($conn, $court_id, $club_id)
+function canDeleteReserve($conn, $reserve_id, $club_id)
 {
-    $query = $conn->query("SELECT club_id FROM reserve WHERE court_id = '$court_id'");
+    $query = $conn->query("SELECT club_id FROM reserve WHERE reserve_id = '$reserve_id'");
+
+    if ($query->num_rows <= 0) return false;
 
     $clubIdFromDatabase = $query->fetch_assoc()['club_id'];
 
