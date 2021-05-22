@@ -19,7 +19,7 @@ $(document).ready(function () {
                 user_id: id,
             },
             success: function () {
-                setTimeout(function () { location.reload(); }, 2000);
+                setTimeout(function () { location.reload(); }, 1600);
                 const formData = new FormData();
                 fetch('../admin/delete.php', {
                     method: "POST",
