@@ -3,7 +3,6 @@ session_start();
 include_once 'inc/db.inc.php';
 include_once 'inc/functions.inc.php';
 ?>
-
 <html lang="en">
 
 <head>
@@ -19,7 +18,6 @@ include_once 'inc/functions.inc.php';
 </head>
 
 <body>
-
     <header class="index_header">
         <div class="inner-width">
             <div class="menu-icon">
@@ -35,7 +33,6 @@ include_once 'inc/functions.inc.php';
         </ul>
     </div>
     <?php
-
     if (isset($_SESSION['role'])) {
         if (strcasecmp($_SESSION['role'], "admin") == 0) {
             echo "<div class='navigation-menu'>";
@@ -96,7 +93,6 @@ include_once 'inc/functions.inc.php';
     echo "<section id='home' class='home'>";
     echo "<div class='inner-width-home'>";
     echo "<div class='index_content'>";
-    $username = $_SESSION['username'];
     echo "<h1></h1>";
     echo "</div>";
     echo "</div>";
@@ -131,7 +127,6 @@ include_once 'inc/functions.inc.php';
 
     ?>
     <script src="../login-register-system/javascript/app.js"></script>
-
 </body>
 
 </html>

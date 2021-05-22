@@ -51,11 +51,9 @@
                     Kein Account? <a href="./signup.php">Registrieren</a>
                 </div>
             </form>
-
         </section>
     </div>
 </body>
-
 <script src="./javascript/registration.js"></script>
 
 </html>
