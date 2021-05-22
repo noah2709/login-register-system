@@ -5,5 +5,6 @@ $(".menu-icon").click(function () {
     $(".menu-icon i").toggleClass("fa-times");
     $(".slides img").toggleClass("active");
     $(".middle").toggleClass("active");
+    $(".inner-width-home").toggleClass("active");
 });
 
