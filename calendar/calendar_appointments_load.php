@@ -9,7 +9,7 @@ include_once '../inc/functions.inc.php';
 
 $data = array();
 
-$query = "SELECT * FROM golfcourt WHERE club_id IS NOT NULL ORDER BY court_id";
+$query = "SELECT * FROM reserve WHERE club_id IS NOT NULL ORDER BY court_id";
 $statement = $conn->query($query);
 $result = $statement->fetch_all(MYSQLI_ASSOC);
 
@@ -29,7 +29,7 @@ foreach ($eventResult as $row) {
 }
 foreach ($result as $row) {
     $data[] = array(
-        'title'   => $row["name"],
+        'title'   => "Reserve | " . $row["name"],
         'start'   => $row["start"],
         'end'   => $row["end"],
     );
