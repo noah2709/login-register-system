@@ -19,6 +19,7 @@ include_once 'inc/functions.inc.php';
 </head>
 
 <body>
+
     <header class="index_header">
         <div class="inner-width">
             <div class="menu-icon">
@@ -55,7 +56,7 @@ include_once 'inc/functions.inc.php';
 
             if (hasClub($conn, $userid)) {
 
-                echo "<li><a href='trainer/club_events.php'>Ihre nächsten Wettkämpfe</a></li>";
+                echo "<li><a href='trainer/club_events.php'>Wettkämpfe</a></li>";
                 echo "<li><a href='trainer/golfcourt/reverse_golfcourt.php'>Golfplatz reservieren</a></li>";
                 echo "<li><a href='admin/event.php'>Wettkampf eintragen</a></li>";
             } else {
@@ -74,7 +75,7 @@ include_once 'inc/functions.inc.php';
             if (!hasClub($conn, $userid)) {
                 echo "<li><a href='club_enter.php'>Club beitreten</a></li>";
             } else {
-                echo "<li><a href='trainer/club_events.php'>Ihre nächsten Wettkämpfe</a></li>";
+                echo "<li><a href='trainer/club_events.php'>Wettkämpfe</a></li>";
             }
             echo "<li><a href='calendar/calendar.php'>Terminkalender</a></li>";
             echo "</nav>";
@@ -92,6 +93,16 @@ include_once 'inc/functions.inc.php';
     }
 
 
+    echo "<section id='home' class='home'>";
+    echo "<div class='inner-width-home'>";
+    echo "<div class='index_content'>";
+    $username = $_SESSION['username'];
+    echo "<h1></h1>";
+    echo "</div>";
+    echo "</div>";
+    echo "</section>";
+
+
     echo "<div class='centered_pictures'>";
     echo "<div class='slidershow middle'>";
     echo "<div class='slides'>";
@@ -99,13 +110,15 @@ include_once 'inc/functions.inc.php';
     echo "<input type='radio' name='r' id='r2' hidden>";
     echo "<input type='radio' name='r' id='r3' hidden>";
     echo "<div class='slide s1'>";
-    echo "<img src='img/golf_1.jpg'> alt='picture 1 not found'>";
+    echo "<img id='image' src='img/golf_1.jpg'> alt='picture 1 not found'>";
     echo "</div>";
     echo "<div class='slide s2'>";
-    echo "<img src='img/golf_2.jpg' alt='picture 2 not found'>";
+    echo "<img id='image' src='img/golf_2.jpg' alt='picture 2 not found'>";
     echo "</div>";
     echo "<div class='slide s3'>";
-    echo "<img src='img/golf_3.jpg' alt='picture 3 not found'>";
+    echo "<img id='image' src='img/golf_3.jpg' alt='picture 3 not found'>";
+    echo "</div>";
+    echo "</div>";
     echo "</div>";
     echo "</div>";
     echo "<div class='navigation'>";
@@ -113,8 +126,7 @@ include_once 'inc/functions.inc.php';
     echo "<label for='r2' class='bar'></label>";
     echo "<label for='r3' class='bar'></label>";
     echo "</div>";
-    echo "</div>";
-    echo "</div>";
+
 
 
     ?>
