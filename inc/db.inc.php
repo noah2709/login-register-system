@@ -28,7 +28,7 @@ $conn->query("CREATE TABLE IF NOT EXISTS user (user_id int NOT NULL AUTO_INCREME
 
 $conn->query("CREATE TABLE IF NOT EXISTS golfcourt (court_id int NOT NULL AUTO_INCREMENT, name VARCHAR(50), club_id int, PRIMARY KEY (court_id))");
 
-$conn->query("CREATE TABLE IF NOT EXISTS reserve (court_id int NOT NULL AUTO_INCREMENT, name VARCHAR(50), start date, end date, club_id int, PRIMARY KEY (court_id), FOREIGN KEY (club_id) REFERENCES club(club_id))");
+$conn->query("CREATE TABLE IF NOT EXISTS reserve (reserve_id int NOT NULL AUTO_INCREMENT, name VARCHAR(50), start date, end date, club_id int, court_id int, PRIMARY KEY (reserve_id), FOREIGN KEY (club_id) REFERENCES club(club_id), FOREIGN KEY (court_id) REFERENCES golfcourt(court_id))");
 
 $conn->query("CREATE TABLE IF NOT EXISTS event (event_id int NOT NULL AUTO_INCREMENT, starttime datetime, endtime datetime, winner int, club_id1 int, club_id2 int, court_id int, PRIMARY KEY (event_id), FOREIGN KEY (court_id) REFERENCES golfcourt(court_id))");
 
