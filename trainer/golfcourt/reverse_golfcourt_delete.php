@@ -7,17 +7,17 @@ include_once '../../inc/functions.inc.php';
 
 
 
-if (isset($_POST["court_id"])) {
+if (isset($_POST["reserve_id"])) {
 
-    $court_id = $_POST['court_id'];
+    $reserve_id = $_POST['reserve_id'];
 
     $userId = $_SESSION['userid'];
     $club = getClub($conn, $userId);
     $club_id = $club['club_id'];
 
 
-    $query = "DELETE FROM reserve WHERE court_id = ?";
+    $query = "DELETE FROM reserve WHERE reserve_id = ?";
     $statement = $conn->prepare($query);
-    $statement->bind_param("i", $court_id);
+    $statement->bind_param("i", $reserve_id);
     $statement->execute();
 }
