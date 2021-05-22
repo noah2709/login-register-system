@@ -4,18 +4,15 @@ body {
     font-family: "Ubuntu" ,sans-serif;
     height: 100vh;
     overflow: hidden;
-    text-decoration: none;
     box-sizing: border-box;
     list-style: none;
     background: rgb(42, 42, 41);
 }
 
-/*
-
+/* 
     background: #fc466b; 
     background: -webkit-linear-gradient(to right, #fc466b, #3f5efb); 
-    background: linear-gradient(to right, #fc466b, #3f5efb); 
-*/
+    background: linear-gradient(to right, #fc466b, #3f5efb);  */
 
 .center {
     position: absolute;
@@ -59,6 +56,37 @@ form .text__field {
     pointer-events: none;
     transition: .5s;
 }
+
+#pwd_validity, #pwd_validity_repeat {
+  margin: -3px 5px;
+  font-size: 17px;
+  opacity: 0.65;
+}
+
+#pwd_validity.active, #pwd_validity_repeat.active {
+  color: red;
+}
+
+#pwd_validity.ready, #pwd_validity_repeat.ready {
+  opacity: 1 !important;
+  color: rgb(148, 209, 55) !important;
+}
+
+.text__field i {
+  position: fixed;  
+  margin-top: 3%;
+  margin-left: -5%;
+  color: rgb(0, 0, 0)
+}
+#pwd_eye.active:hover, #pwd_eye:hover, #pwd_eye_repeat.active:hover, #pwd_eye_repeat:hover {
+  pointer-events: visible;
+  cursor: pointer;
+}
+
+#pwd_eye.active, #pwd_eye_repeat.active {
+  color: rgb(48, 134, 29);
+}
+
 .text__field span::before {
     content: '';
     position: absolute;
@@ -123,27 +151,37 @@ input.btn:hover {
     text-decoration: underline;
 }
 .errors {
-    width: 100%;
     font-size: 25px;
     text-align: center;
 }
 #warning_input {
+    padding: 12px;
+    text-align: center;
+    width: 70%;
     background: rgba(238, 150, 36, 0.8);
     color: #fff;
 }
 #error_pwd {
-    background: rgba(218, 63, 63, 0.8);
+    padding: 12px;
+    text-align: center;
+    width: 70%;
     color: #fff;
+    background: rgba(218, 63, 63, 0.8);
 }
 #error_wpwd {
+    padding: 12px;
+    text-align: center;
+    width: 70%;
     background: rgba(218, 63, 63, 0.8);
     color: #fff;
 }
 #succes {
+    padding: 12px;
+    text-align: center;
+    width: 70%;
     background: #bbf35a;
     color: #fff;
 }
-
 .h1 {
   text-align: center;
   font-family: "penumbra-serif-std", sans-serif;
@@ -395,11 +433,11 @@ input.btn:hover {
   background-color: rgb(112, 9, 107);
 }
 
-.index_header h1 {
+/* .index_header h1 {
   text-align: center;
   margin: auto;
   color: rgba(255, 255, 255, 0.452);
-}
+} */
 
 .inner-width{
   max-width: 80%;
@@ -408,7 +446,7 @@ input.btn:hover {
 
 .menu-icon {
   margin-left: 100%;
-  padding: 14px 20px;
+  padding: 2% 20px;
   align-items: flex-end;
   justify-content: space-between;
 }
@@ -416,6 +454,7 @@ input.btn:hover {
 .menu-icon:hover{
   opacity: 0.9;
   transform: scale(1.15);
+  transition: .07s;
 }
 
 .menu-icon.active {
@@ -471,28 +510,42 @@ input.btn:hover {
   margin: 20px 0;
   overflow: hidden;
 }
-
-.navigation-menu a{
-  color: #fff;
-  font-size: 40px;
-  font-weight: 700;
-  position: relative;
-  display: inline-block;
-  transform: translateY(40px);
-  z-index: 100;
-}
-
 .navigation-menu a::before{
   content: "";
   position: absolute;
   width: 0;
-  height: 10px;
-  background: #fd7474;
+  height: 4px;
+  background: #cfbcbc;
   bottom: 0;
   left: 0;
   border-radius: 15px;
   z-index: -1;
   transition: .2s linear;
+}
+.navigation-menu li::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  background: url("img/arrow-right.svg") 0 0 no-repeat;
+  background-size: contain;
+  vertical-align: -3px;
+}
+
+.navigation-menu a{
+  color: #a5b9c6;
+  font-size: 1.7em;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  transform: translateY(40px);
+  z-index: 100;
+  text-decoration: none;
+}
+
+#delete_trash:hover{
+  cursor: pointer;
 }
 
 .navigation-menu a:hover::before{
@@ -649,8 +702,8 @@ p{
   border: none;
   font-size: 30px;
   padding: 10px 5px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.479);
 }
-
 .social_flyout .some_list li a:hover {
   background: rgba(255, 255, 255, 0.363);
 }
