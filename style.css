@@ -565,6 +565,7 @@ p{
   right: 0;
 }
 
+
 .navigation-menu.active a{
   transform: translateY(0);
   transition: .6s linear;
@@ -617,12 +618,13 @@ p{
 
 .middle {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 3px solid white;
-  border-radius: 35px;
+  top: 0;
+  /* border: 3px solid white; */
+  /* border-radius: 35px; */
   min-width: 380px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 .navigation {
@@ -708,6 +710,10 @@ p{
   background: rgba(255, 255, 255, 0.363);
 }
 
+#image_one {
+	filter: brightness(1.1) contrast(1.3) blur(1.2px);
+}
+
 #club_register_dropdown {
   
     position: absolute;
@@ -719,4 +725,47 @@ p{
     transition: .5s;
     cursor: pointer;
     border-radius: 7.44px;
+}
+
+#home .inner-width-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  text-align: center;
+}
+
+#home .index_content {
+  width: 100%;
+  color: #db9513;
+    background: radial-gradient(ellipse at center, rgba(237, 181, 72, 0.1) 0%, rgba(237, 181, 72, 0.1) 20%, rgba(237, 181, 72, 0) 70%, rgba(237, 181, 72, 0) 100%);
+}
+
+#home .inner-width-home.active .index_content h1 {
+  visibility: hidden;
+}
+
+#home .index_content h1 {
+  font-size: 60px;
+  margin-bottom: 60px;
+  font-family: 'Courier New', Courier, monospace
+}
+
+#home .index_content h1::after{
+  content: "Hallo du fleißiger Sportler!";
+  animation: textanimation 20s linear infinite;
+}
+
+
+@keyframes textanimation {
+  25% {
+    content: "Viel Spaß!";
+  }
+  50% {
+    content: "Hey";
+  }
+  75% {
+    content: "";
+  }
+  
 }
