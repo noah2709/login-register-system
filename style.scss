@@ -1,15 +1,3 @@
-@keyframes textanimation {
-  25% {
-    content: "Viel Spaß!";
-  }
-  50% {
-    content: "Hey";
-  }
-  75% {
-    content: "";
-  }
-}
-
 @mixin flexCenter {
   display: flex;
   align-items: center;
@@ -21,10 +9,10 @@ body {
   padding: 0;
   font-family: "Ubuntu", sans-serif;
   height: 100vh;
-  overflow: hidden;
   box-sizing: border-box;
   list-style: none;
   background: rgb(42, 42, 41);
+  overflow: hidden;
 }
 .center {
   position: absolute;
@@ -220,28 +208,28 @@ input.btn {
 #warning_input {
   padding: 12px;
   text-align: center;
-  width: 70%;
+  width: 100%;
   background: rgba(238, 150, 36, 0.8);
   color: #fff;
 }
 #error_pwd {
   padding: 12px;
   text-align: center;
-  width: 70%;
+  width: 100%;
   color: #fff;
   background: rgba(218, 63, 63, 0.8);
 }
 #error_wpwd {
   padding: 12px;
   text-align: center;
-  width: 70%;
+  width: 100%;
   background: rgba(218, 63, 63, 0.8);
   color: #fff;
 }
 #succes {
   padding: 12px;
   text-align: center;
-  width: 70%;
+  width: 100%;
   background: #bbf35a;
   color: #fff;
 }
@@ -647,6 +635,11 @@ p {
         transition-delay: 1s;
       }
     }
+    &:nth-child(6) {
+      a {
+        transition-delay: 1.2s;
+      }
+    }
   }
 }
 .navigation.active {
@@ -769,9 +762,10 @@ p {
     }
   }
 }
-#image_one {
-  filter: brightness(1.1) contrast(1.3) blur(1.2px);
+#image {
+  background: linear-gradient(to right, rgba(#272727, 1), rgba(#272727, 0.3));
 }
+
 #club_register_dropdown {
   position: absolute;
   top: 50%;
@@ -791,7 +785,7 @@ p {
   }
   .index_content {
     width: 100%;
-    color: #979692;
+    color: #ffffff;
     background: radial-gradient(
       ellipse at center,
       rgba(237, 181, 72, 0.1) 0%,
@@ -804,7 +798,8 @@ p {
       margin-bottom: 60px;
       font-family: "Courier New", Courier, monospace;
       &::after {
-        content: "Hallo du fleißiger Sportler!";
+        content: "Site developed by:";
+        -webkit-animation: textanimation 20s linear infinite;
         animation: textanimation 20s linear infinite;
       }
     }
@@ -815,5 +810,190 @@ p {
         visibility: hidden;
       }
     }
+  }
+}
+@-webkit-keyframes textanimation {
+  25% {
+    content: "Elia Plate";
+    font-style: italic;
+  }
+  50% {
+    content: "Noah Parzentny";
+    font-style: italic;
+  }
+  75% {
+    content: "Tristan Zaton";
+    font-style: italic;
+  }
+  100% {
+    content: "Viel Spaß!";
+    font-style: italic;
+  }
+}
+@keyframes textanimation {
+  25% {
+    content: "Elia Plate";
+    font-style: italic;
+  }
+  50% {
+    content: "Noah Parzentny";
+    font-style: italic;
+  }
+  75% {
+    content: "Tristan Zaton";
+    font-style: italic;
+  }
+  100% {
+    content: "Viel Spaß!";
+    font-style: italic;
+  }
+}
+
+footer {
+  font-size: 1rem;
+  position: fixed;
+  bottom: 0.4rem;
+  padding: 1px;
+  right: 1rem;
+  text-align: right;
+  color: #fff;
+}
+
+.datenschutz__impressum {
+  font-size: 1rem;
+  position: fixed;
+  bottom: 0.4rem;
+  padding: 1px;
+  left: 1rem;
+  text-align: right;
+
+  li {
+    display: block;
+    float: left;
+    margin-right: 50px;
+
+    a {
+      text-decoration: none;
+      color: #fff;
+
+      &:hover {
+        color: rgb(100, 98, 98);
+        transition: 0.2s;
+      }
+    }
+  }
+}
+
+.privacy__body {
+  background: -webkit-linear-gradient(300deg, #5775cf, #5775cf);
+  overflow: visible;
+}
+
+.privacy__title__container {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 35px 0px;
+  text-align: center;
+  width: 100%;
+}
+
+.privay__title {
+  h1 {
+    color: #202020;
+    font-family: "Lora", sans-serif;
+    font-size: 45px;
+    font-weight: 500;
+    line-height: 1.1em;
+  }
+}
+.impressum__content__container {
+  h2 {
+    text-align: center;
+    font-size: 35px;
+  }
+  h3 {
+    margin-left: 20%;
+    margin-bottom: 0;
+    font-size: 25px;
+  }
+  p {
+    max-width: 60%;
+    margin-bottom: 0;
+    font-size: 18px;
+  }
+  .small_margin_bottom,
+  #small_margin_bottom {
+    margin-bottom: -4%;
+  }
+  .high_margin_top {
+    margin-top: 2%;
+  }
+}
+
+.privacy__content__container {
+  .small_margin_top {
+    margin-top: -2%;
+  }
+  h2 {
+    margin-left: 20%;
+    font-size: 35px;
+  }
+  h3 {
+    margin-left: 20%;
+    margin-bottom: 0;
+    font-size: 25px;
+  }
+  h4 {
+    margin-left: 20%;
+    color: #181717;
+    font-size: 22px;
+    margin-bottom: 0;
+  }
+  p {
+    max-width: 60%;
+    margin-bottom: 0;
+    font-size: 18px;
+  }
+}
+
+@media screen and(max-width: 660px) {
+  .slides img {
+    visibility: hidden;
+  }
+  .bar {
+    visibility: hidden;
+  }
+
+  .datenschutz__impressum {
+    li {
+      display: block;
+      margin-right: 0;
+      margin-bottom: 0.4rem;
+      padding: 1rem;
+
+      a {
+        &::after {
+          content: " | ";
+          color: grey;
+          position: fixed;
+          margin-left: 3%;
+        }
+        text-decoration: none;
+        color: black;
+
+        &:hover {
+          color: rgb(100, 98, 98);
+          transition: 0.2s;
+        }
+      }
+    }
+  }
+  footer {
+    font-size: 1rem;
+    position: fixed;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    right: 1rem;
+    text-align: right;
+    color: black;
   }
 }
