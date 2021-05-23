@@ -25,13 +25,6 @@ include_once 'inc/functions.inc.php';
             </div>
         </div>
     </header>
-    <div class="social_flyout">
-        <ul class="some_list">
-            <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github"></i></a></li>
-            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-        </ul>
-    </div>
     <?php
     if (isset($_SESSION['role'])) {
         if (strcasecmp($_SESSION['role'], "admin") == 0) {
@@ -41,6 +34,7 @@ include_once 'inc/functions.inc.php';
             echo "<li><a href='admin/update.php'>Benutzer bearbeiten</a></li>";
             echo "<li><a href='admin/search.php'>Benutzer suchen</a></li>";
             echo "<li><a href='calendar/calendar.php'>Terminkalender</a></li>";
+            echo "<li><a href='trainer/golfcourt/reverse_golfcourt.php'>Golfplatz Termine</a></li>";
             echo "<li><a href='inc/logout.inc.php'>Ausloggen</a></li>";
             echo "</nav>";
             echo "</div>";
@@ -89,43 +83,65 @@ include_once 'inc/functions.inc.php';
         echo "</div>";
     }
 
-
-    echo "<section id='home' class='home'>";
-    echo "<div class='inner-width-home'>";
-    echo "<div class='index_content'>";
-    echo "<h1></h1>";
-    echo "</div>";
-    echo "</div>";
-    echo "</section>";
-
-
-    echo "<div class='centered_pictures'>";
-    echo "<div class='slidershow middle'>";
-    echo "<div class='slides'>";
-    echo "<input type='radio' name='r' id='r1' checked hidden>";
-    echo "<input type='radio' name='r' id='r2' hidden>";
-    echo "<input type='radio' name='r' id='r3' hidden>";
-    echo "<div class='slide s1'>";
-    echo "<img id='image' src='img/golf_1.jpg'> alt='picture 1 not found'>";
-    echo "</div>";
-    echo "<div class='slide s2'>";
-    echo "<img id='image' src='img/golf_2.jpg' alt='picture 2 not found'>";
-    echo "</div>";
-    echo "<div class='slide s3'>";
-    echo "<img id='image' src='img/golf_3.jpg' alt='picture 3 not found'>";
-    echo "</div>";
-    echo "</div>";
-    echo "</div>";
-    echo "</div>";
-    echo "<div class='navigation'>";
-    echo "<label for='r1' class='bar'></label>";
-    echo "<label for='r2' class='bar'></label>";
-    echo "<label for='r3' class='bar'></label>";
-    echo "</div>";
-
-
-
     ?>
+
+    <section id='home' class='home'>
+        <div class='inner-width-home'>
+            <div class='index_content'>
+                <h1></h1>
+            </div>
+        </div>
+    </section>
+
+
+    <div class='centered_pictures'>
+        <div class='slidershow middle'>
+            <div class='slides'>
+                <input type='radio' name='r' id='r1' checked hidden>
+                <input type='radio' name='r' id='r2' hidden>
+                <input type='radio' name='r' id='r3' hidden>
+                <div class='slide s1'>
+                    <img id='image' src='img/golf_1.jpg'> alt='picture 1 not found'>
+                </div>
+                <div class='slide s2'>
+                    <img id='image' src='img/golf_2.jpg' alt='picture 2 not found'>
+                </div>
+                <div class='slide s3'>
+                    <img id='image' src='img/golf_3.jpg' alt='picture 3 not found'>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='navigation'>
+        <label for='r1' class='bar'></label>
+        <label for='r2' class='bar'></label>
+        <label for='r3' class='bar'></label>
+    </div>
+
+
+    <div class="social_flyout">
+        <ul class="some_list">
+            <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github"></i></a></li>
+            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="datenschutz__impressum">
+        <ul>
+            <li>
+                <a href="impressum.php">Impressum</a>
+            </li>
+            <li>
+                <a href="privacy.php">Datenschutz</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <footer><i class="far fa-copyright"> Copyright 2021</i></footer>
+
+
     <script src="../login-register-system/javascript/app.js"></script>
 </body>
 
