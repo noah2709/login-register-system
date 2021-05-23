@@ -22,7 +22,7 @@
             } else if ($_GET['error'] == "invalidemail") {
                 echo "<p id='error_pwd'>Wähle bitte eine valide E-Mail!</p>";
             } else if ($_GET['error'] == "usernametaken") {
-                echo "<p id='error_pwd'>Dieser Benutzer existiert bereits!</p>";
+                echo "<p id='error_pwd'>Dieser Benutzername existiert bereits!</p>";
             } else if ($_GET['error'] == "passworddontmatch") {
                 echo "<p id='error_pwd'>Die Passwörter stimmen nicht überein.</p>";
             } else if ($_GET['error'] == "SELECTFAILED") {
@@ -91,6 +91,20 @@
             </form>
         </section>
     </div>
+
+    <div class="datenschutz__impressum">
+        <ul>
+            <li>
+                <a href="impressum.php">Impressum</a>
+            </li>
+            <li>
+                <a href="privacy.php">Datenschutz</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <footer><i class="far fa-copyright"> Copyright 2021</i></footer>
 </body>
 
 <script src="./javascript/registration.js"></script>

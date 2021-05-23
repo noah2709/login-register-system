@@ -24,9 +24,9 @@
             if ($_GET['error'] == "emptyinput") {
                 echo "<div id='warning_input'>Fülle bitte alle Felder aus!</div>";
             } else if ($_GET['error'] == "wronglogin1") {
-                echo "<div id='error_pwd'>Dein Passwort oder Benutzername ist falsch!</div>";
+                echo "<div id='error_pwd'>Dein Passwort oder Benutzername/E-Mail ist falsch!</div>";
             } else if ($_GET['error'] == "wronglogin2") {
-                echo "<div id='error_wpwd'>Dein Passwort oder Benutzername ist falsch!</div>";
+                echo "<div id='error_wpwd'>Dein Passwort oder Benutzername/E-Mail ist falsch!</div>";
             }
         }
         ?>
@@ -53,6 +53,20 @@
             </form>
         </section>
     </div>
+
+    <div class="datenschutz__impressum">
+        <ul>
+            <li>
+                <a href="impressum.php">Impressum</a>
+            </li>
+            <li>
+                <a href="privacy.php">Datenschutz</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <footer><i class="far fa-copyright"> Copyright 2021</i></footer>
 </body>
 <script src="./javascript/registration.js"></script>
 
