@@ -96,6 +96,19 @@ if (isset($_POST['submit'])) {
     </div>
 
 
+    <div class="datenschutz__impressum">
+        <ul>
+            <li>
+                <a href="../impressum.php">Impressum</a>
+            </li>
+            <li>
+                <a href="../privacy.php">Datenschutz</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <footer><i class="far fa-copyright"> Copyright 2021</i></footer>
 </body>
 
 <script src="../javascript/jquery.js"></script>

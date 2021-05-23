@@ -105,6 +105,20 @@ require_once '../inc/db.inc.php';
 
     </div>
 
+    <div class="datenschutz__impressum">
+        <ul>
+            <li>
+                <a href="../impressum.php">Impressum</a>
+            </li>
+            <li>
+                <a href="../privacy.php">Datenschutz</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <footer><i class="far fa-copyright"> Copyright 2021</i></footer>
+
 
 </body>
 
