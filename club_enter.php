@@ -10,14 +10,6 @@
 </head>
 
 <body>
-    <div class="social_flyout">
-        <ul class="some_list">
-            <li><a href="index.php"><i class="fas fa-backward"></i></a></li>
-            <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github"></i></a></li>
-            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-        </ul>
-    </div>
     <div class="errors">
         <?php
         if (isset($_GET['error'])) {
@@ -42,7 +34,7 @@
     <div class="center">
         <section class="input__form">
             <h1>Club beitreten</h1>
-            <form action="../inc/club_enter.inc.php" method="POST">
+            <form action="../login-register-system/inc/login.inc.php" method="POST">
                 <div class="text__field">
                     <input type="text" name="token" required>
                     <span></span>
@@ -52,6 +44,29 @@
             </form>
         </section>
     </div>
+
+    <div class="social_flyout">
+        <ul class="some_list">
+            <li><a href="index.php"><i class="fas fa-backward"></i></a></li>
+            <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github"></i></a></li>
+            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+        </ul>
+    </div>
+    <div class="datenschutz__impressum">
+        <ul>
+            <li>
+                <a href="impressum.php">Impressum</a>
+            </li>
+            <li>
+                <a href="privacy.php">Datenschutz</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <footer><i class="far fa-copyright"> Copyright 2021</i></footer>
+
 </body>
 
 </html>

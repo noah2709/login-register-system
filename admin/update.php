@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
         </ul>
     </div>
     <div class="wrapper">
-        <table class="content">
+        <table class="admin_content">
             <thead>
                 <tr>
                     <th>ID</th>

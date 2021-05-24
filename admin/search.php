@@ -26,7 +26,7 @@ require_once '../inc/db.inc.php';
         </ul>
     </div>
     <div class="wrapper">
-        <table class="content">
+        <table class="admin_content">
             <thead>
                 <tr>
                     <th>ID</th>

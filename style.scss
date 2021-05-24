@@ -450,9 +450,43 @@ input.btn {
   margin-right: auto;
   min-width: 960px;
 }
-.content {
+.admin_content {
   border-collapse: collapse;
   margin: 15px;
+  min-width: 400px;
+  float: right;
+  width: 40%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: rgb(31, 31, 31);
+  overflow: hidden;
+  thead {
+    tr {
+      th {
+        background-color: black;
+        color: rgb(226, 222, 222);
+        font-size: 20px;
+        border-bottom: 1px solid white;
+        font-weight: bold;
+        padding: 0 55px;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        color: rgb(226, 222, 222);
+        padding: 5px;
+        text-align: center;
+        font-size: 20px;
+        border-bottom: 1px solid rgb(65, 62, 62);
+      }
+    }
+  }
+}
+.content {
+  border-collapse: collapse;
+  margin: 15px 380px 0px 0px;
   min-width: 400px;
   float: right;
   width: 40%;

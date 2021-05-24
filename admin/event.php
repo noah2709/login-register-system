@@ -61,67 +61,63 @@ if (isset($_POST['submit'])) {
         }
         ?>
     </div>
-    <div class="wrapper">
-        <div class="h1">
-            <h1>Wettkampf erstellen</h1>
-        </div>
 
-        <div class="eventbox">
-            <form action="../inc/event_signup.inc.php" method="POST" class="eventform">
-
-                <div class="wettkampf_border">
-
-
-                    <div class="starttime_text">Start:</div>
-                    <p><input name="starttime" type="datetime-local" required /></p>
-
-
-                    <div class="endtime_text">Ende:</div>
-                    <p><input name="endtime" type="datetime-local" required /></p>
-
-
-                    <?php
-                    echo '<select name="club_one" id="dropDown">';
-                    $query = $conn->query("SELECT name FROM club");
-                    while ($row = $query->fetch_assoc()) {
-                        echo "<option name='club_one' value='" . $row['name'] . "'>" . $row['name'] . "</option>";
-                    }
-                    echo "</select> <br>";
-
-                    echo '<select name="club_two" id="dropDown">';
-                    $query = $conn->query("SELECT name FROM club");
-                    while ($row = $query->fetch_assoc()) {
-                        echo "<option name='club_two' value='" . $row['name'] . "'>" . $row['name'] . "</option>";
-                    }
-                    echo "</select> <br>";
-
-
-                    echo '<select name="town" id="dropDown">';
-                    $query = $conn->query("SELECT name FROM golfcourt");
-                    while ($row = $query->fetch_assoc()) {
-                        echo "<option name='town' value='" . $row['name'] . "'>" . $row['name'] . "</option>";
-                    }
-                    echo "</select> <br>";
-
-
-                    ?>
-
-                    <input type="submit" name="event_submit" value="Wettkampf erstellen">
-
-                </div>
-
-            </form>
-
-            <div class="social_flyout">
-                <ul class="some_list">
-                    <li><a href="../index.php"><i class="fas fa-backward"></i></a></li>
-                    <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github"></i></a></li>
-                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                </ul>
+    <div class="event__box">
+        <div class="event__title__container">
+            <div class="event__title">
+                <h1>Wettkampf erstellen</h1>
             </div>
         </div>
 
+        <form action="../inc/event_signup.inc.php" method="POST" class="eventform">
+            <p>Start:</p>
+            <p><input name="starttime" type="datetime-local" required /></p>
+
+
+            <p>Ende:</p>
+            <p><input name="endtime" type="datetime-local" required /></p>
+
+
+            <?php
+            echo '<select name="club_one" id="dropDown">';
+            $query = $conn->query("SELECT name FROM club");
+            while ($row = $query->fetch_assoc()) {
+                echo "<option name='club_one' value='" . $row['name'] . "'>" . $row['name'] . "</option>";
+            }
+            echo "</select> <br>";
+
+            echo '<select name="club_two" id="dropDown">';
+            $query = $conn->query("SELECT name FROM club");
+            while ($row = $query->fetch_assoc()) {
+                echo "<option name='club_two' value='" . $row['name'] . "'>" . $row['name'] . "</option>";
+            }
+            echo "</select> <br>";
+
+
+            echo '<select name="town" id="dropDown">';
+            $query = $conn->query("SELECT name FROM golfcourt");
+            while ($row = $query->fetch_assoc()) {
+                echo "<option name='town' value='" . $row['name'] . "'>" . $row['name'] . "</option>";
+            }
+            echo "</select> <br>";
+
+
+            ?>
+
+            <input type="submit" name="event_submit" value="Wettkampf erstellen">
+
+
+        </form>
+    </div>
+
+
+    <div class="social_flyout">
+        <ul class="some_list">
+            <li><a href="../index.php"><i class="fas fa-backward"></i></a></li>
+            <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github"></i></a></li>
+            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+        </ul>
     </div>
 
 
