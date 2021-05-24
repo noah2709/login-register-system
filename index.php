@@ -101,13 +101,13 @@ include_once 'inc/functions.inc.php';
                 <input type='radio' name='r' id='r2' hidden>
                 <input type='radio' name='r' id='r3' hidden>
                 <div class='slide s1'>
-                    <img id='image'>
+                    <img id='image' src='img/golf_1.jpg'> alt='picture 1 not found'>
                 </div>
                 <div class='slide s2'>
-                    <img id='image'>
+                    <img id='image' src='img/golf_2.jpg' alt='picture 2 not found'>
                 </div>
                 <div class='slide s3'>
-                    <img id='image'>
+                    <img id='image' src='img/golf_3.jpg' alt='picture 3 not found'>
                 </div>
             </div>
         </div>
@@ -119,7 +119,7 @@ include_once 'inc/functions.inc.php';
     </div>
 
 
-    <div class=" social_flyout">
+    <div class="social_flyout">
         <ul class="some_list">
             <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github"></i></a></li>
             <li><a href="#"><i class="fab fa-youtube"></i></a></li>
