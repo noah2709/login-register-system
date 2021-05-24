@@ -67,6 +67,7 @@
 
 
     <footer><i class="far fa-copyright"> Copyright 2021</i></footer>
+
 </body>
 <script src="./javascript/registration.js"></script>
 

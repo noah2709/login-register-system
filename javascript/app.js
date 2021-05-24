@@ -7,4 +7,3 @@ $(".menu-icon").click(function () {
     $(".middle").toggleClass("active");
     $(".inner-width-home").toggleClass("active");
 });
-
