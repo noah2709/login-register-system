@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/2deba413ff.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
-    <title>Datenschutz</title>
+    <title>Impressum</title>
 </head>
 
 <body class="privacy__body">
