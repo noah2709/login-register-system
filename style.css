@@ -798,24 +798,27 @@ p {
 
 .slide {
   width: 20%;
-  -webkit-transition: 0.6s;
-  transition: 0.6s;
 }
 
 .slide img {
-  width: 100%;
   height: 100%;
 }
 
 #r1:checked ~ .s1 {
+  background: url("img/golf_1.jpg");
+  opacity: 0.3;
   margin-left: 0;
 }
 
 #r2:checked ~ .s2 {
+  background: url("img/golf_2.jpg");
+  opacity: 0.3;
   margin-left: -20%;
 }
 
 #r3:checked ~ .s3 {
+  background: url("img/golf_3.jpg");
+  opacity: 0.3;
   margin-left: -40%;
 }
 
@@ -897,7 +900,7 @@ p {
 
 #home .index_content {
   width: 100%;
-  color: #ffffff;
+  color: #f9f3f4;
   background: radial-gradient(ellipse at center, rgba(237, 181, 72, 0.1) 0%, rgba(237, 181, 72, 0.1) 20%, rgba(237, 181, 72, 0) 70%, rgba(237, 181, 72, 0) 100%);
 }
 
@@ -908,6 +911,8 @@ p {
 }
 
 #home .index_content h1::after {
+  font-size: 124%;
+  font-family: Mountserrat, serif;
   content: "Site developed by:";
   -webkit-animation: textanimation 20s linear infinite;
   animation: textanimation 20s linear infinite;
@@ -989,6 +994,29 @@ footer {
   color: #646262;
   -webkit-transition: 0.2s;
   transition: 0.2s;
+}
+
+.event__title__container {
+  margin: 0px 0px 0px 0px;
+  padding: 50px 0px 35px 0px;
+  text-align: center;
+  width: 100%;
+}
+
+.event__box {
+  display: -ms-grid;
+  display: grid;
+  width: 800px;
+  height: 466px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid #5a5454;
+  margin-left: 30%;
+  margin-top: 10%;
 }
 
 .privacy__body {
