@@ -34,7 +34,7 @@
     <div class="center">
         <section class="input__form">
             <h1>Club beitreten</h1>
-            <form action="../login-register-system/inc/club_enter.inc.php" method="POST">
+            <form action="./inc/club_enter.inc.php" method="POST">
                 <div class="text__field">
                     <input type="text" name="token" required>
                     <span></span>

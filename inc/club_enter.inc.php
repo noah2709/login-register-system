@@ -18,17 +18,17 @@ if (isset($_POST["submit"])) {
     }
 
     if (empty($token)) {
-        header("location: ../trainer/club_enter.php?error=emptyinput");
+        header("location: ../club_enter.php?error=emptyinput");
         exit();
     }
     if (!tokenExists($conn, $token)) {
-        header("location: ../trainer/club_enter.php?error=invalidtoken");
+        header("location: ../club_enter.php?error=invalidtoken");
         exit();
     }
     enterClub($conn, $club_id, $userid);
-    header("location: ../trainer/club_enter.php?error=none");
+    header("location: ../club_enter.php?error=none");
     exit();
 } else {
-    header("location: ../trainer/club_enter.php");
+    header("location: ../club_enter.php");
     exit();
 }
