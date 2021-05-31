@@ -11,8 +11,8 @@ A simple login-register system for our final project in our database course
 - [x] Update the club register form
 - [x] Create the Calendar for Events
 - [x] Create Sweetalert for Calendar
-- [ ] Create the User-Panel
-- [ ] Create the Admin-Panel
-- [ ] Create the Trainer-Panel
+- [x] Create the User-Panel
+- [x] Create the Admin-Panel
+- [x] Create the Trainer-Panel
 
 
