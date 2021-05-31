@@ -182,7 +182,8 @@ function createUser($conn, $firstname, $lastname, $username, $password, $email)
 function createClub($conn, $clubName, $postalCode, $userId)
 
 {
-    $sql    = "INSERT INTO club (name, wins, losses, postalcode) VALUES (?, ?, ?, ?);";
+    $sql    = "INSERT INTO club (name, wins, losses, postalcode, token) VALUES (?, ?, ?, ?, ?);";
+    $token = generateToken(9);
     $stmt   = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../trainer/club_register.php?error=INSERTFAILED");
@@ -192,7 +193,7 @@ function createClub($conn, $clubName, $postalCode, $userId)
     $wins = 0;
     $losses = 0;
 
-    mysqli_stmt_bind_param($stmt, "siii", $clubName, $wins, $losses, $postalCode);
+    mysqli_stmt_bind_param($stmt, "siii", $clubName, $wins, $losses, $postalCode, $token);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
