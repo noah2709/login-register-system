@@ -193,7 +193,7 @@ function createClub($conn, $clubName, $postalCode, $userId)
     $wins = 0;
     $losses = 0;
 
-    mysqli_stmt_bind_param($stmt, "siii", $clubName, $wins, $losses, $postalCode, $token);
+    mysqli_stmt_bind_param($stmt, "siiis", $clubName, $wins, $losses, $postalCode, $token);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
