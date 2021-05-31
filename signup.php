@@ -50,7 +50,7 @@
     <div class="center">
         <section class="input__form">
             <h1>Registrieren</h1>
-            <form action="../login-register-system/inc/signup.inc.php" method="POST">
+            <form action="../inc/signup.inc.php" method="POST">
                 <div class="text__field">
                     <input type="text" name="firstname" required>
                     <span></span>

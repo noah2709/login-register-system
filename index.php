@@ -142,7 +142,7 @@ include_once 'inc/functions.inc.php';
     <footer><i class="far fa-copyright"> Copyright 2021</i></footer>
 
 
-    <script src="../login-register-system/javascript/app.js"></script>
+    <script src="../javascript/app.js"></script>
 </body>
 
 </html>
