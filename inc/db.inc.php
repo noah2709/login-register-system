@@ -22,15 +22,15 @@ $conn->query("CREATE TABLE IF NOT EXISTS town (postalcode int NOT NULL, name VAR
 
 $conn->query("CREATE TABLE IF NOT EXISTS club (club_id int NOT NULL AUTO_INCREMENT, name VARCHAR(50), wins int, losses int, postalcode int, token text, PRIMARY KEY (club_id), FOREIGN KEY (postalcode) REFERENCES town(postalcode))");
 
-$conn->query("CREATE TABLE IF NOT EXISTS role (role_id int NOT NULL, role_name VARCHAR(50), PRIMARY KEY (role_id))");
+$conn->query("CREATE TABLE IF NOT EXISTS role (role_id int NOT NULL, role_name NULL VARCHAR(50), PRIMARY KEY (role_id))");
 
-$conn->query("CREATE TABLE IF NOT EXISTS user (user_id int NOT NULL AUTO_INCREMENT, firstname VARCHAR(50), lastname VARCHAR(50), username text, password text, email text, role_id int, club_id int, PRIMARY KEY (user_id), FOREIGN KEY (role_id) REFERENCES role(role_id), FOREIGN KEY (club_id) REFERENCES club(club_id))");
+$conn->query("CREATE TABLE IF NOT EXISTS user (user_id int NOT NULL AUTO_INCREMENT, firstname VARCHAR(50), lastname VARCHAR(50), username text, password text, email text, role_id int, club_id NULL int, PRIMARY KEY (user_id), FOREIGN KEY (role_id) REFERENCES role(role_id), FOREIGN KEY (club_id) REFERENCES club(club_id))");
 
-$conn->query("CREATE TABLE IF NOT EXISTS golfcourt (court_id int NOT NULL AUTO_INCREMENT, name VARCHAR(50), club_id int, PRIMARY KEY (court_id))");
+$conn->query("CREATE TABLE IF NOT EXISTS golfcourt (court_id int NOT NULL AUTO_INCREMENT, name VARCHAR(50), club_id NULL int, PRIMARY KEY (court_id))");
 
-$conn->query("CREATE TABLE IF NOT EXISTS reserve (reserve_id int NOT NULL AUTO_INCREMENT, name VARCHAR(50), start date, end date, club_id int, court_id int, PRIMARY KEY (reserve_id), FOREIGN KEY (club_id) REFERENCES club(club_id), FOREIGN KEY (court_id) REFERENCES golfcourt(court_id))");
+$conn->query("CREATE TABLE IF NOT EXISTS reserve (reserve_id int NOT NULL AUTO_INCREMENT, name VARCHAR(50), start date, end date, club_id NULL int, court_id NULL int, PRIMARY KEY (reserve_id), FOREIGN KEY (club_id) REFERENCES club(club_id), FOREIGN KEY (court_id) REFERENCES golfcourt(court_id))");
 
-$conn->query("CREATE TABLE IF NOT EXISTS event (event_id int NOT NULL AUTO_INCREMENT, starttime datetime, endtime datetime, winner int, club_id1 int, club_id2 int, court_id int, PRIMARY KEY (event_id), FOREIGN KEY (court_id) REFERENCES golfcourt(court_id))");
+$conn->query("CREATE TABLE IF NOT EXISTS event (event_id int NOT NULL AUTO_INCREMENT, starttime datetime, endtime datetime, winner int, club_id1 NULL int, club_id2 NULL int, court_id NULL int, PRIMARY KEY (event_id), FOREIGN KEY (court_id) REFERENCES golfcourt(court_id))");
 
 /* Create standard datasets if not exists */
 
