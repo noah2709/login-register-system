@@ -1045,6 +1045,34 @@ footer {
   margin-top: 10%;
 }
 
+.event__title {
+  border-bottom: 1px solid white;
+  color: #fff;
+}
+
+.event__form__start {
+  margin-top: -10%;
+  color: #fff;
+}
+
+.event__form__end {
+  color: #fff;
+  margin-top: -15%;
+}
+
+#dropDown {
+  position: absolute;
+  left: 47.5%;
+  background-color: rgba(255, 255, 255, 0.603);
+  padding: 0 0 0 50px;
+}
+
+.event__submit {
+  background-color: rgba(255, 255, 255, 0.603);
+  margin-top: 50px;
+  margin-left: 30%;
+}
+
 .privacy__body {
   background: -webkit-linear-gradient(300deg, #5775cf, #5775cf);
   overflow: visible;
