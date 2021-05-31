@@ -34,7 +34,7 @@
     <div class="center">
         <section class="input__form">
             <h1>Einloggen</h1>
-            <form action="../login-register-system/inc/login.inc.php" method="POST">
+            <form action="./inc/login.inc.php" method="POST">
                 <div class="text__field">
                     <input type="text" name="username" required>
                     <span></span>
