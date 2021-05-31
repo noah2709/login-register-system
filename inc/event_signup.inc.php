@@ -1,9 +1,9 @@
 <?php
 
-if (isset($_POST["event_submit"])) {
+if (isset($_POST["event__submit"])) {
 
-    require_once 'db.inc.php';
-    require_once 'functions.inc.php';
+    include_once 'db.inc.php';
+    include_once 'functions.inc.php';
 
     $start = date("Y-m-d H:i:s", strtotime(mysqli_real_escape_string($conn, $_POST["starttime"])));
     $end = date("Y-m-d H:i:s", strtotime(mysqli_real_escape_string($conn, $_POST["endtime"])));
