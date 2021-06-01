@@ -1,25 +1,7 @@
 <?php
-require_once '../inc/db.inc.php';
+include_once '../inc/db.inc.php';
 ?>
 
-<?php
-
-if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $id = $_POST['id'];
-
-    if (!empty($username) or !empty($email) or !empty($id)) {
-
-        $stmt = $conn->prepare("DELETE FROM user WHERE username = ? or email = ? or user_id = ?");
-        $stmt->bind_param("ssi", $username, $email, $id);
-
-        $stmt->execute();
-        $stmt->close();
-    }
-}
-
-?>
 <!DOCTYPE html>
 <html lang="de">
 
@@ -69,20 +51,18 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
 
-        <form action="../inc/event_signup.inc.php" method="POST" class="eventform">
-            <p>Start:</p>
-            <p><input name="starttime" type="datetime-local" required /></p>
+        <form action="../inc/event_signup.inc.php" method="POST" class="event__form">
+            <p class="event__form__start">Start:<input name="starttime" type="datetime-local" required /></p>
 
 
-            <p>Ende:</p>
-            <p><input name="endtime" type="datetime-local" required /></p>
+            <p class="event__form__end">Ende:<input name="endtime" type="datetime-local" required /></p>
 
 
             <?php
             echo '<select name="club_one" id="dropDown">';
             $query = $conn->query("SELECT name FROM club");
             while ($row = $query->fetch_assoc()) {
-                echo "<option name='club_one' value='" . $row['name'] . "'>" . $row['name'] . "</option>";
+                echo "<option name='club_one' class='club_one' value='" . $row['name'] . "'>" . $row['name'] . "</option>";
             }
             echo "</select> <br>";
 
@@ -103,11 +83,8 @@ if (isset($_POST['submit'])) {
 
 
             ?>
+            <input type="submit" class="event__submit" name="event__submit" value="Wettkampf erstellen">
 
-            <input type="submit" name="event_submit" value="Wettkampf erstellen">
-
-
-        </form>
     </div>
 
 
