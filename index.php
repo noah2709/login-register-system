@@ -101,7 +101,7 @@ include_once 'inc/functions.inc.php';
                 <input type='radio' name='r' id='r2' hidden>
                 <input type='radio' name='r' id='r3' hidden>
                 <div class='slide s1'>
-                    <img id='image' src='img/golf_1.jpg'> alt='picture 1 not found'>
+                    <img id='image' src='img/golf_1.jpg' alt='picture 1 not found'>
                 </div>
                 <div class='slide s2'>
                     <img id='image' src='img/golf_2.jpg' alt='picture 2 not found'>
