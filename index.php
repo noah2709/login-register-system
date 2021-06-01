@@ -48,7 +48,7 @@ include_once 'inc/functions.inc.php';
             if (hasClub($conn, $userid)) {
                 $club = getClub($conn, $userid);
                 $token = $club['token'];
-                echo "<li><a href='trainer/club_events.php'>Ihr Token: $token</a></li>";
+                echo "<li><a href='#'>Ihr Token: $token</a></li>";
                 echo "<li><a href='trainer/club_events.php'>Wettkämpfe</a></li>";
                 echo "<li><a href='trainer/golfcourt/reverse_golfcourt.php'>Golfplatz reservieren</a></li>";
                 echo "<li><a href='admin/event.php'>Wettkampf eintragen</a></li>";
