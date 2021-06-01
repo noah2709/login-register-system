@@ -46,7 +46,9 @@ include_once 'inc/functions.inc.php';
             echo "<nav>";
 
             if (hasClub($conn, $userid)) {
-
+                $club = getClub($conn, $userid);
+                $token = $club['token'];
+                echo "<li><a href='trainer/club_events.php'>Ihr Token: $token</a></li>";
                 echo "<li><a href='trainer/club_events.php'>Wettkämpfe</a></li>";
                 echo "<li><a href='trainer/golfcourt/reverse_golfcourt.php'>Golfplatz reservieren</a></li>";
                 echo "<li><a href='admin/event.php'>Wettkampf eintragen</a></li>";
@@ -142,7 +144,7 @@ include_once 'inc/functions.inc.php';
     <footer><i class="far fa-copyright"> Copyright 2021</i></footer>
 
 
-    <script src="../javascript/app.js"></script>
+    <script src="./javascript/app.js"></script>
 </body>
 
 </html>
