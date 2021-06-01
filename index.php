@@ -124,7 +124,7 @@ include_once 'inc/functions.inc.php';
     <div class="social_flyout">
         <ul class="some_list">
             <li><a href="https://github.com/Taikador/login-register-system"><i class="fab fa-github"></i></a></li>
-            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="https://youtu.be/Mfk1QRHjVXU?t=26"><i class="fab fa-youtube"></i></a></li>
             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
         </ul>
     </div>
